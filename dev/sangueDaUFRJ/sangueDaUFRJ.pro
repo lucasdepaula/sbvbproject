@@ -17,7 +17,8 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    mainmenu.ui
 
 OTHER_FILES += \
     logo sangue.jpg \

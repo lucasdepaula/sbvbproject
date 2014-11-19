@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
+// #include <QtSql> // adicionar no PRO ->   QT += sql
 
 int main(int argc, char *argv[])
 {

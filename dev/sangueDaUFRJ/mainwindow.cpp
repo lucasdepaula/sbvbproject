@@ -6,8 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setStyleSheet("background-image: url(./logo_sangue.png);");
-//    setStyleSheet("background-color: rgba(255, 255, 255, 10);");
+    setStyleSheet("background-image: url(./sangue.png);");
 }
 
 MainWindow::~MainWindow()
