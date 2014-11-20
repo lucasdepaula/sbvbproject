@@ -1,6 +1,7 @@
 #include "newdrive.h"
 #include "ui_newdrive.h"
 #include <QDesktopWidget>
+#include <QCloseEvent>
 
 NewDrive::NewDrive(QWidget *parent) :
     QMainWindow(parent),
