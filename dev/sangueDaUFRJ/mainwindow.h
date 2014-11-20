@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "mainmenu.h"
 namespace Ui {
 class MainWindow;
 }
@@ -21,8 +21,13 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void closeEvent(QCloseEvent *);
+
 private:
     Ui::MainWindow *ui;
+    QMainWindow *appmenu;
 };
 
 #endif // MAINWINDOW_H

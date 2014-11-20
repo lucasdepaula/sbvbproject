@@ -6,110 +6,61 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>485</height>
+    <width>427</width>
+    <height>342</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>480</width>
-    <height>485</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>480</width>
-    <height>485</height>
-   </size>
-  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Sangue da UFRJ</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>30</y>
-      <width>301</width>
-      <height>21</height>
+      <x>138</x>
+      <y>40</y>
+      <width>121</width>
+      <height>27</height>
      </rect>
     </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
+    <property name="text">
+     <string>Nova Inscrição</string>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background:transparent;</string>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>138</x>
+      <y>90</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;SANGUE UFRJ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Novo Mutirão</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>140</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gerar Relatório</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>110</y>
-      <width>200</width>
-      <height>41</height>
+      <y>180</y>
+      <width>121</width>
+      <height>27</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Helvetica Neue&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Criar Nova Inscrição</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>190</y>
-      <width>200</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Helvetica Neue&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Criar Novo Multirão</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>270</y>
-      <width>200</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Helvetica Neue&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Gerar Relatórios</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>350</y>
-      <width>200</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Helvetica Neue&quot;;</string>
     </property>
     <property name="text">
      <string>Sobre</string>
@@ -121,11 +72,12 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>480</width>
-     <height>22</height>
+     <width>427</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

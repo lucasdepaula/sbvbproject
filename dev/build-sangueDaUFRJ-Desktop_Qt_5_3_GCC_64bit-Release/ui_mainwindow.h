@@ -194,7 +194,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Nova Inscri\303\247\303\243o - Sangue da UFRJ", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "SangueUFRJ", 0));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "1\302\272", 0)
