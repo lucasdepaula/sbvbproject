@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>427</width>
-    <height>342</height>
+    <width>485</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>485</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>485</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Sangue da UFRJ</string>
@@ -17,9 +35,9 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>138</x>
-      <y>40</y>
-      <width>121</width>
+      <x>178</x>
+      <y>110</y>
+      <width>125</width>
       <height>27</height>
      </rect>
     </property>
@@ -30,9 +48,9 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>138</x>
-      <y>90</y>
-      <width>121</width>
+      <x>178</x>
+      <y>180</y>
+      <width>125</width>
       <height>27</height>
      </rect>
     </property>
@@ -43,9 +61,9 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>140</y>
-      <width>121</width>
+      <x>180</x>
+      <y>250</y>
+      <width>125</width>
       <height>27</height>
      </rect>
     </property>
@@ -56,14 +74,30 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>180</y>
-      <width>121</width>
+      <x>180</x>
+      <y>320</y>
+      <width>125</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
      <string>Sobre</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>425</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;SANGUE DA UFRJ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -72,8 +106,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>427</width>
-     <height>25</height>
+     <width>485</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

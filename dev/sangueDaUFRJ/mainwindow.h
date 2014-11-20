@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "mainmenu.h"
+//#include "newdrive.h"
+
 namespace Ui {
 class MainWindow;
 }

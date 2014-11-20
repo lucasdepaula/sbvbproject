@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mainmenu.cpp
+    mainmenu.cpp \
+    newdrive.cpp
 
 HEADERS  += mainwindow.h \
-    mainmenu.h
+    mainmenu.h \
+    newdrive.h
 
 FORMS    += mainwindow.ui \
-    mainmenu.ui
+    mainmenu.ui \
+    newdrive.ui
 
 OTHER_FILES += \
     logo sangue.jpg \

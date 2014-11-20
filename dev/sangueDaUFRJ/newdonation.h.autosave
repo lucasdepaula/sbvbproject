@@ -1,0 +1,27 @@
+#ifndef NEWDONATION_H
+#define NEWDONATION_H
+
+#include <QMainWindow>
+#include "mainwindow.h"
+#include "mainmenu.h"
+
+namespace Ui {
+class NewDonation;
+}
+
+class NewDonation : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit NewDonation(QWidget *parent = 0);
+    ~NewDonation();
+
+
+private slots:
+    
+private:
+    Ui::NewDonation *ui;
+};
+
+#endif // NEWDONATION_H

@@ -28,3 +28,15 @@ void MainMenu::on_pushButton_clicked()
     inscricao->show();
     this->close();
 }
+
+void MainMenu::on_pushButton_2_clicked()
+{
+    mutirao = new NewDrive();
+
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width()-mutirao->width()) / 2;
+    int y = (screenGeometry.height()-mutirao->height()) / 2;
+    mutirao->move(x, y);
+    mutirao->show();
+    this->close();
+}

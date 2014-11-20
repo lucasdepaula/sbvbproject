@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include "newdrive.h"
+
 namespace Ui {
 class MainMenu;
 }
@@ -19,9 +21,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainMenu *ui;
     QMainWindow *inscricao;
+    QMainWindow *mutirao;
 };
 
 #endif // MAINMENU_H
