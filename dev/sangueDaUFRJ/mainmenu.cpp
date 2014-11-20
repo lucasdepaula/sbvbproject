@@ -8,7 +8,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-    setStyleSheet("background-image: url(./sangue.png);");
+    setStyleSheet("background: url(./sangue.png) top 100%;font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px;");
 }
 
 MainMenu::~MainMenu()
@@ -20,6 +20,7 @@ void MainMenu::on_pushButton_clicked()
 {
     //add code here to open the main window at the center of the screen
     inscricao = new MainWindow();
+
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-inscricao->width()) / 2;
     int y = (screenGeometry.height()-inscricao->height()) / 2;
