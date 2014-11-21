@@ -18,6 +18,11 @@ NewDrive::~NewDrive()
 
 void NewDrive::on_pushButton_clicked()
 {
+    this->close();
+}
+
+void NewDrive::closeEvent(QCloseEvent *)
+{
     appmenu = new MainMenu();
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-appmenu->width()) / 2;
@@ -25,9 +30,4 @@ void NewDrive::on_pushButton_clicked()
     appmenu->move(x, y);
     appmenu->show();
     this->close();
-}
-
-void NewDrive::closeEvent(QCloseEvent *)
-{
-    NewDrive::on_pushButton_clicked();
 }

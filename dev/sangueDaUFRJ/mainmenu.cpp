@@ -32,7 +32,6 @@ void MainMenu::on_pushButton_clicked()
 void MainMenu::on_pushButton_2_clicked()
 {
     mutirao = new NewDrive();
-
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-mutirao->width()) / 2;
     int y = (screenGeometry.height()-mutirao->height()) / 2;

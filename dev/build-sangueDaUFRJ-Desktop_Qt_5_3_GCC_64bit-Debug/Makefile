@@ -47,13 +47,17 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../sangueDaUFRJ/main.cpp \
 		../sangueDaUFRJ/mainwindow.cpp \
-		../sangueDaUFRJ/mainmenu.cpp moc_mainwindow.cpp \
-		moc_mainmenu.cpp
+		../sangueDaUFRJ/mainmenu.cpp \
+		../sangueDaUFRJ/newdrive.cpp moc_mainwindow.cpp \
+		moc_mainmenu.cpp \
+		moc_newdrive.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		mainmenu.o \
+		newdrive.o \
 		moc_mainwindow.o \
-		moc_mainmenu.o
+		moc_mainmenu.o \
+		moc_newdrive.o
 DIST          = /home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/common/shell-unix.conf \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/common/unix.conf \
@@ -163,7 +167,8 @@ DIST          = /home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/features/lex.prf \
 		../sangueDaUFRJ/sangueDaUFRJ.pro ../sangueDaUFRJ/main.cpp \
 		../sangueDaUFRJ/mainwindow.cpp \
-		../sangueDaUFRJ/mainmenu.cpp
+		../sangueDaUFRJ/mainmenu.cpp \
+		../sangueDaUFRJ/newdrive.cpp
 QMAKE_TARGET  = sangueDaUFRJ
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = sangueDaUFRJ
@@ -193,7 +198,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): ui_mainwindow.h ui_mainmenu.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_mainmenu.h ui_newdrive.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../sangueDaUFRJ/sangueDaUFRJ.pro /home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++/qmake.conf /home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -426,7 +431,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/sangueDaUFRJ1.0.0 || mkdir -p .tmp/sangueDaUFRJ1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.h ../sangueDaUFRJ/mainmenu.h .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainmenu.cpp .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.ui ../sangueDaUFRJ/mainmenu.ui .tmp/sangueDaUFRJ1.0.0/ && (cd `dirname .tmp/sangueDaUFRJ1.0.0` && $(TAR) sangueDaUFRJ1.0.0.tar sangueDaUFRJ1.0.0 && $(COMPRESS) sangueDaUFRJ1.0.0.tar) && $(MOVE) `dirname .tmp/sangueDaUFRJ1.0.0`/sangueDaUFRJ1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/sangueDaUFRJ1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.h ../sangueDaUFRJ/mainmenu.h ../sangueDaUFRJ/newdrive.h .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/newdrive.cpp .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.ui ../sangueDaUFRJ/mainmenu.ui ../sangueDaUFRJ/newdrive.ui .tmp/sangueDaUFRJ1.0.0/ && (cd `dirname .tmp/sangueDaUFRJ1.0.0` && $(TAR) sangueDaUFRJ1.0.0.tar sangueDaUFRJ1.0.0 && $(COMPRESS) sangueDaUFRJ1.0.0.tar) && $(MOVE) `dirname .tmp/sangueDaUFRJ1.0.0`/sangueDaUFRJ1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/sangueDaUFRJ1.0.0
 
 
 clean:compiler_clean 
@@ -449,9 +454,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_mainmenu.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mainmenu.cpp moc_newdrive.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_mainmenu.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mainmenu.cpp moc_newdrive.cpp
 moc_mainwindow.cpp: /home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qwidget.h \
@@ -555,6 +560,9 @@ moc_mainwindow.cpp: /home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/newdrive.h \
 		../sangueDaUFRJ/mainwindow.h
 	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/moc $(DEFINES) -I/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++ -I/home/lucas/Projetos/C++/sbvbproject/dev/sangueDaUFRJ -I/home/lucas/Qt5.3.2/5.3/gcc_64/include -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore -I. ../sangueDaUFRJ/mainwindow.h -o moc_mainwindow.cpp
 
@@ -662,19 +670,133 @@ moc_mainmenu.cpp: /home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
 		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
 		../sangueDaUFRJ/mainmenu.h
 	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/moc $(DEFINES) -I/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++ -I/home/lucas/Projetos/C++/sbvbproject/dev/sangueDaUFRJ -I/home/lucas/Qt5.3.2/5.3/gcc_64/include -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore -I. ../sangueDaUFRJ/mainmenu.h -o moc_mainmenu.cpp
 
+moc_newdrive.cpp: /home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qwidget.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qglobal.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qconfig.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfeatures.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtypetraits.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlogging.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qflags.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmutex.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qnumeric.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qnamespace.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobject.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstring.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qchar.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qbytearray.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qrefcount.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qarraydata.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlist.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qalgorithms.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qiterator.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcoreevent.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmetatype.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qisenum.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobject_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmargins.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qrect.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsize.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qpoint.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpalette.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qcolor.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qrgb.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringlist.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qdatastream.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qiodevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qpair.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qregexp.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qbrush.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvector.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qmatrix.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpolygon.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qregion.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qline.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtransform.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpainterpath.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qimage.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpixmap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qshareddata.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qhash.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfont.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfontinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qcursor.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qkeysequence.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qevent.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvariant.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qdebug.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtextstream.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlocale.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qset.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qurl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qurlquery.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfile.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfiledevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qvector2d.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/newdrive.h
+	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/moc $(DEFINES) -I/home/lucas/Qt5.3.2/5.3/gcc_64/mkspecs/linux-g++ -I/home/lucas/Projetos/C++/sbvbproject/dev/sangueDaUFRJ -I/home/lucas/Qt5.3.2/5.3/gcc_64/include -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui -I/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore -I. ../sangueDaUFRJ/newdrive.h -o moc_newdrive.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_mainmenu.h
+compiler_uic_make_all: ui_mainwindow.h ui_mainmenu.h ui_newdrive.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_mainmenu.h
+	-$(DEL_FILE) ui_mainwindow.h ui_mainmenu.h ui_newdrive.h
 ui_mainwindow.h: ../sangueDaUFRJ/mainwindow.ui
 	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/uic ../sangueDaUFRJ/mainwindow.ui -o ui_mainwindow.h
 
 ui_mainmenu.h: ../sangueDaUFRJ/mainmenu.ui
 	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/uic ../sangueDaUFRJ/mainmenu.ui -o ui_mainmenu.h
+
+ui_newdrive.h: ../sangueDaUFRJ/newdrive.ui
+	/home/lucas/Qt5.3.2/5.3/gcc_64/bin/uic ../sangueDaUFRJ/newdrive.ui -o ui_newdrive.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -791,13 +913,15 @@ main.o: ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
 		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QApplication \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qapplication.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qeventloop.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qguiapplication.h \
-		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qinputmethod.h
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qinputmethod.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../sangueDaUFRJ/main.cpp
 
 mainwindow.o: ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainwindow.h \
@@ -904,6 +1028,8 @@ mainwindow.o: ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainwindow.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
 		ui_mainwindow.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/QVariant \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAction \
@@ -954,7 +1080,8 @@ mainwindow.o: ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainwindow.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QTextEdit \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtextedit.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtextdocument.h \
-		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../sangueDaUFRJ/mainwindow.cpp
 
 mainmenu.o: ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/mainmenu.h \
@@ -1062,6 +1189,7 @@ mainmenu.o: ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/mainmenu.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
 		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/newdrive.h \
 		ui_mainmenu.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/QVariant \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QAction \
@@ -1093,22 +1221,138 @@ mainmenu.o: ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/mainmenu.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstyle.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QLabel \
-		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qlabel.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMenuBar \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenubar.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QPushButton \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QStatusBar \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QWidget \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainmenu.o ../sangueDaUFRJ/mainmenu.cpp
+
+newdrive.o: ../sangueDaUFRJ/newdrive.cpp ../sangueDaUFRJ/newdrive.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QMainWindow \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qwidget.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qglobal.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qconfig.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfeatures.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtypetraits.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsysinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlogging.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qflags.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmutex.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qnumeric.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qnamespace.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobject.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstring.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qchar.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qbytearray.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qrefcount.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qarraydata.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlist.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qalgorithms.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qiterator.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcoreevent.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmetatype.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qisenum.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qobject_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmargins.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qrect.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsize.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qpoint.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpalette.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qcolor.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qrgb.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringlist.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qdatastream.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qiodevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qpair.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qregexp.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qbrush.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvector.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qmatrix.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpolygon.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qregion.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qline.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtransform.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpainterpath.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qimage.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qpixmap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qshareddata.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qhash.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfont.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qfontinfo.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qcursor.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qkeysequence.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qevent.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qvariant.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qmap.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qdebug.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qtextstream.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qlocale.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qset.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qurl.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qurlquery.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfile.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtCore/qfiledevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qvector2d.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/qicon.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		ui_newdrive.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/QDesktopWidget \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/lucas/Qt5.3.2/5.3/gcc_64/include/QtGui/QCloseEvent
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newdrive.o ../sangueDaUFRJ/newdrive.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_mainmenu.o: moc_mainmenu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainmenu.o moc_mainmenu.cpp
+
+moc_newdrive.o: moc_newdrive.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_newdrive.o moc_newdrive.cpp
 
 ####### Install
 

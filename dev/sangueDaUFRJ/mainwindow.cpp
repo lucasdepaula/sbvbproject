@@ -28,16 +28,17 @@ void MainWindow::on_pushButton_2_clicked() //"Salvar e finalizar"
 void MainWindow::on_pushButton_3_clicked()
 {
     // volta para o form principal
+    this->close();
+
+}
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
     appmenu = new MainMenu();
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-appmenu->width()) / 2;
     int y = (screenGeometry.height()-appmenu->height()) / 2;
     appmenu->move(x, y);
     appmenu->show();
-    this->close();
-}
 
-void MainWindow::closeEvent(QCloseEvent *)
-{
-    MainWindow::on_pushButton_3_clicked();
 }
