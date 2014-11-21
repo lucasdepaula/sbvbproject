@@ -2,6 +2,9 @@
 #include "ui_report.h"
 #include <QDesktopWidget>
 #include <QCloseEvent>
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 
 Report::Report(QWidget *parent) :
     QMainWindow(parent),
@@ -30,4 +33,15 @@ void Report::closeEvent(QCloseEvent *)
     appmenu->move(x, y);
     appmenu->show();
     this->close();
+}
+
+void Report::on_pushButton_2_clicked()
+{
+    QString filename = QFileDialog::getSaveFileName(this, "DialogTitle", "filename.csv", "CSV files (*.csv);;Zip files (*.zip, *.7z)", 0, 0); // getting the filename (full path)
+    QFile data(filename);
+    if(data.open(QFile::WriteOnly |QFile::Truncate))
+    {
+            QTextStream output(&data);
+            output << "'csv';test'";
+    }
 }

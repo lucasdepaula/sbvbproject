@@ -24,6 +24,8 @@ private slots:
     void closeEvent(QCloseEvent *);
 
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::Report *ui;
     QMainWindow *appmenu;
