@@ -2,6 +2,7 @@
 #include "ui_newdrive.h"
 #include <QDesktopWidget>
 #include <QCloseEvent>
+#include <QtSql/QSql>
 
 NewDrive::NewDrive(QWidget *parent) :
     QMainWindow(parent),

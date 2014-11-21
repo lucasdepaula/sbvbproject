@@ -2,6 +2,7 @@
 #include "ui_about.h"
 #include <QDesktopWidget>
 #include <QCloseEvent>
+#include <QtSql/QSql>
 
 About::About(QWidget *parent) :
     QMainWindow(parent),

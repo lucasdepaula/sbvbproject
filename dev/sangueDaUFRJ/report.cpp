@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
+#include <QtSql/QSql>
 
 Report::Report(QWidget *parent) :
     QMainWindow(parent),

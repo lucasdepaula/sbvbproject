@@ -2,6 +2,7 @@
 #include "ui_mainmenu.h"
 #include "mainwindow.h"
 #include <QDesktopWidget>
+#include <QtSql/QSql>
 
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
