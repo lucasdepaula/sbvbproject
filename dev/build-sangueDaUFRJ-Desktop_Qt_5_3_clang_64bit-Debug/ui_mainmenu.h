@@ -61,13 +61,13 @@ public:
         pushButton_4->setGeometry(QRect(180, 320, 125, 27));
         label = new QLabel(centralwidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 30, 361, 31));
+        label->setGeometry(QRect(60, 30, 360, 31));
         label->setAutoFillBackground(false);
         label->setStyleSheet(QStringLiteral("background:transparent;"));
         MainMenu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainMenu);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 480, 22));
+        menubar->setGeometry(QRect(0, 0, 480, 21));
         MainMenu->setMenuBar(menubar);
 
         retranslateUi(MainMenu);

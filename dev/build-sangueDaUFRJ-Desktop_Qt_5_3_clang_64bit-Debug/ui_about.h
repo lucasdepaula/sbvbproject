@@ -50,7 +50,7 @@ public:
         label->setStyleSheet(QStringLiteral("background:transparent;"));
         label_5 = new QLabel(About);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(60, 90, 361, 321));
+        label_5->setGeometry(QRect(60, 80, 361, 351));
         label_5->setStyleSheet(QStringLiteral("background:transparent;"));
         label_5->setWordWrap(true);
 
@@ -64,7 +64,7 @@ public:
         About->setWindowTitle(QApplication::translate("About", "Sobre - SangueUFRJ", 0));
         pushButton->setText(QApplication::translate("About", "Voltar", 0));
         label->setText(QApplication::translate("About", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">SOBRE</span></p></body></html>", 0));
-        label_5->setText(QApplication::translate("About", "<html><head/><body><p align=\"center\"><span style=\" font-size:15pt;\">SangueUFRJ foi desenvolvido com o intuito de atingir o maior n\303\272mero de pessoas na doa\303\247\303\243o de sangue para o hospital universit\303\241rio (HUCFF), auxiliando na organiza\303\247\303\243o de mutir\303\265es pelo c\303\242mpus.<br/></span></p><p align=\"center\"><span style=\" font-size:15pt;\"><br/></span></p><p align=\"center\"><span style=\" font-size:15pt;\">Alunos Envolvidos @ECI</span></p><p align=\"center\"><span style=\" font-size:15pt;\">Igor Rocha, Lucas Cabral, Lucas Santos, Rafael Damasceno, Thiago Maia</span></p><p align=\"center\"><br/><br/></p><p align=\"center\"><span style=\" font-size:12pt;\">vers\303\243o 1.0.0</span></p></body></html>", 0));
+        label_5->setText(QApplication::translate("About", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">SangueUFRJ foi desenvolvido com o intuito de atingir o maior n\303\272mero de pessoas na doa\303\247\303\243o de sangue para o hospital universit\303\241rio (HUCFF), auxiliando na organiza\303\247\303\243o de mutir\303\265es pelo c\303\242mpus.<br/></span></p><p align=\"center\"><span style=\" font-size:12pt;\"><br/></span></p><p align=\"center\"><span style=\" font-size:12pt;\">Alunos Envolvidos @ECI</span></p><p align=\"center\"><span style=\" font-size:12pt;\">Igor Rocha, Lucas Cabral, Lucas Santos, Rafael Damasceno, Thiago Maia</span></p><p align=\"center\"><span style=\" font-size:12pt;\"><br/><br/></span></p><p align=\"center\"><span style=\" font-size:12pt;\">vers\303\243o 1.0.0</span></p></body></html>", 0));
     } // retranslateUi
 
 };

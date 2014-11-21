@@ -157,7 +157,7 @@ public:
         pushButton_2->setStyleSheet(QStringLiteral(""));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 30, 361, 31));
+        label->setGeometry(QRect(50, 30, 380, 31));
         label->setAutoFillBackground(false);
         label->setStyleSheet(QStringLiteral("background:transparent;"));
         pushButton_3 = new QPushButton(centralWidget);
@@ -188,7 +188,7 @@ public:
         pushButton_3->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 480, 22));
+        menuBar->setGeometry(QRect(0, 0, 480, 21));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);

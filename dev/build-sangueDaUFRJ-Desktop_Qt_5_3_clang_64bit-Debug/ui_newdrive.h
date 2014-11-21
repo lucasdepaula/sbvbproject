@@ -66,7 +66,7 @@ public:
         pushButton->setMinimumSize(QSize(0, 0));
         label = new QLabel(centralwidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 30, 361, 31));
+        label->setGeometry(QRect(10, 30, 460, 31));
         label->setAutoFillBackground(false);
         label->setStyleSheet(QStringLiteral("background:transparent;"));
         dateTimeEdit = new QDateTimeEdit(centralwidget);
@@ -122,7 +122,7 @@ public:
         NewDrive->setCentralWidget(centralwidget);
         menubar = new QMenuBar(NewDrive);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 480, 22));
+        menubar->setGeometry(QRect(0, 0, 480, 21));
         NewDrive->setMenuBar(menubar);
 
         retranslateUi(NewDrive);

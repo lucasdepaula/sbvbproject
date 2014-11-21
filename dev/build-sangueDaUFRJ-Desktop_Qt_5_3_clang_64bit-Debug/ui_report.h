@@ -44,7 +44,7 @@ public:
         pushButton->setMinimumSize(QSize(0, 0));
         label = new QLabel(Report);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 30, 361, 31));
+        label->setGeometry(QRect(35, 30, 410, 31));
         label->setAutoFillBackground(false);
         label->setStyleSheet(QStringLiteral("background:transparent;"));
 
