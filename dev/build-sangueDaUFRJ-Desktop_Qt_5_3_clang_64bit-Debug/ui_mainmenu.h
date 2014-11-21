@@ -26,11 +26,11 @@ class Ui_MainMenu
 {
 public:
     QWidget *centralwidget;
-    QLabel *label;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
     QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_7;
+    QLabel *label;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainMenu)
@@ -47,27 +47,23 @@ public:
         MainMenu->setMaximumSize(QSize(480, 485));
         centralwidget = new QWidget(MainMenu);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(90, 30, 301, 21));
-        label->setAutoFillBackground(false);
-        label->setStyleSheet(QStringLiteral("background:transparent;"));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(178, 110, 125, 27));
+        pushButton_2 = new QPushButton(centralwidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(178, 180, 125, 27));
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(180, 250, 125, 27));
         pushButton_4 = new QPushButton(centralwidget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(140, 110, 200, 41));
-        pushButton_4->setStyleSheet(QStringLiteral("font: 15pt \"Helvetica Neue\";"));
-        pushButton_5 = new QPushButton(centralwidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(140, 190, 200, 41));
-        pushButton_5->setStyleSheet(QStringLiteral("font: 15pt \"Helvetica Neue\";"));
-        pushButton_6 = new QPushButton(centralwidget);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(140, 270, 200, 41));
-        pushButton_6->setStyleSheet(QStringLiteral("font: 15pt \"Helvetica Neue\";"));
-        pushButton_7 = new QPushButton(centralwidget);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(140, 350, 200, 41));
-        pushButton_7->setStyleSheet(QStringLiteral("font: 15pt \"Helvetica Neue\";"));
+        pushButton_4->setGeometry(QRect(180, 320, 125, 27));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(60, 30, 361, 31));
+        label->setAutoFillBackground(false);
+        label->setStyleSheet(QStringLiteral("background:transparent;"));
         MainMenu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainMenu);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -81,12 +77,12 @@ public:
 
     void retranslateUi(QMainWindow *MainMenu)
     {
-        MainMenu->setWindowTitle(QApplication::translate("MainMenu", "MainWindow", 0));
-        label->setText(QApplication::translate("MainMenu", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">SANGUE UFRJ</span></p></body></html>", 0));
-        pushButton_4->setText(QApplication::translate("MainMenu", "Criar Nova Inscri\303\247\303\243o", 0));
-        pushButton_5->setText(QApplication::translate("MainMenu", "Criar Novo Multir\303\243o", 0));
-        pushButton_6->setText(QApplication::translate("MainMenu", "Gerar Relat\303\263rios", 0));
-        pushButton_7->setText(QApplication::translate("MainMenu", "Sobre", 0));
+        MainMenu->setWindowTitle(QApplication::translate("MainMenu", "Sangue da UFRJ", 0));
+        pushButton->setText(QApplication::translate("MainMenu", "Nova Inscri\303\247\303\243o", 0));
+        pushButton_2->setText(QApplication::translate("MainMenu", "Novo Mutir\303\243o", 0));
+        pushButton_3->setText(QApplication::translate("MainMenu", "Gerar Relat\303\263rio", 0));
+        pushButton_4->setText(QApplication::translate("MainMenu", "Sobre", 0));
+        label->setText(QApplication::translate("MainMenu", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">SANGUE DA UFRJ</span></p></body></html>", 0));
     } // retranslateUi
 
 };

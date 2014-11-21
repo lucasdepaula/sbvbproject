@@ -39,3 +39,25 @@ void MainMenu::on_pushButton_2_clicked()
     mutirao->show();
     this->close();
 }
+
+void MainMenu::on_pushButton_3_clicked()
+{
+    relatorio = new Report();
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width()-relatorio->width()) / 2;
+    int y = (screenGeometry.height()-relatorio->height()) / 2;
+    relatorio->move(x, y);
+    relatorio->show();
+    this->close();
+}
+
+void MainMenu::on_pushButton_4_clicked()
+{
+    sobre = new About();
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width()-sobre->width()) / 2;
+    int y = (screenGeometry.height()-sobre->height()) / 2;
+    sobre->move(x, y);
+    sobre->show();
+    this->close();
+}

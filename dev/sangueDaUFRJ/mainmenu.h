@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "mainwindow.h"
 #include "newdrive.h"
+#include "report.h"
+#include "about.h"
 
 namespace Ui {
 class MainMenu;
@@ -23,10 +25,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainMenu *ui;
     QMainWindow *inscricao;
     QMainWindow *mutirao;
+    QMainWindow *relatorio;
+    QMainWindow *sobre;
 };
 
 #endif // MAINMENU_H

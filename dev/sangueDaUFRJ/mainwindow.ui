@@ -40,7 +40,7 @@
      <rect>
       <x>90</x>
       <y>200</y>
-      <width>54</width>
+      <width>71</width>
       <height>20</height>
      </rect>
     </property>
@@ -172,7 +172,6 @@
     <property name="font">
      <font>
       <family>Ubuntu</family>
-      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -530,7 +529,7 @@
      <x>0</x>
      <y>0</y>
      <width>480</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

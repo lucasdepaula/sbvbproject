@@ -46,10 +46,26 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../sangueDaUFRJ/main.cpp \
-		../sangueDaUFRJ/mainwindow.cpp moc_mainwindow.cpp
+		../sangueDaUFRJ/mainwindow.cpp \
+		../sangueDaUFRJ/mainmenu.cpp \
+		../sangueDaUFRJ/newdrive.cpp \
+		../sangueDaUFRJ/about.cpp \
+		../sangueDaUFRJ/report.cpp moc_mainwindow.cpp \
+		moc_mainmenu.cpp \
+		moc_newdrive.cpp \
+		moc_about.cpp \
+		moc_report.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		mainmenu.o \
+		newdrive.o \
+		about.o \
+		report.o \
+		moc_mainwindow.o \
+		moc_mainmenu.o \
+		moc_newdrive.o \
+		moc_about.o \
+		moc_report.o
 DIST          = /Users/Damasceno/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Damasceno/Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		/Users/Damasceno/Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -167,7 +183,11 @@ DIST          = /Users/Damasceno/Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/Damasceno/Qt/5.3/clang_64/mkspecs/features/yacc.prf \
 		/Users/Damasceno/Qt/5.3/clang_64/mkspecs/features/lex.prf \
 		../sangueDaUFRJ/sangueDaUFRJ.pro ../sangueDaUFRJ/main.cpp \
-		../sangueDaUFRJ/mainwindow.cpp
+		../sangueDaUFRJ/mainwindow.cpp \
+		../sangueDaUFRJ/mainmenu.cpp \
+		../sangueDaUFRJ/newdrive.cpp \
+		../sangueDaUFRJ/about.cpp \
+		../sangueDaUFRJ/report.cpp
 QMAKE_TARGET  = sangueDaUFRJ
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = sangueDaUFRJ.app/Contents/MacOS/sangueDaUFRJ
@@ -207,7 +227,7 @@ first: all
 
 all: Makefile sangueDaUFRJ.app/Contents/PkgInfo sangueDaUFRJ.app/Contents/Resources/empty.lproj sangueDaUFRJ.app/Contents/Info.plist $(TARGET)
 
-$(TARGET): ui_mainwindow.h ui_mainmenu.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_mainmenu.h ui_newdrive.h ui_about.h ui_report.h $(OBJECTS)  
 	@test -d sangueDaUFRJ.app/Contents/MacOS/ || mkdir -p sangueDaUFRJ.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -471,7 +491,7 @@ sangueDaUFRJ.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,a.sangueDaUFRJ,g" -e "s,@EXECUTABLE@,sangueDaUFRJ,g" -e "s,@TYPEINFO@,????,g" /Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >sangueDaUFRJ.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/sangueDaUFRJ1.0.0 || mkdir -p .tmp/sangueDaUFRJ1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.h .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.cpp .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.ui ../sangueDaUFRJ/mainmenu.ui .tmp/sangueDaUFRJ1.0.0/ && (cd `dirname .tmp/sangueDaUFRJ1.0.0` && $(TAR) sangueDaUFRJ1.0.0.tar sangueDaUFRJ1.0.0 && $(COMPRESS) sangueDaUFRJ1.0.0.tar) && $(MOVE) `dirname .tmp/sangueDaUFRJ1.0.0`/sangueDaUFRJ1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/sangueDaUFRJ1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.h ../sangueDaUFRJ/mainmenu.h ../sangueDaUFRJ/newdrive.h ../sangueDaUFRJ/about.h ../sangueDaUFRJ/report.h .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/newdrive.cpp ../sangueDaUFRJ/about.cpp ../sangueDaUFRJ/report.cpp .tmp/sangueDaUFRJ1.0.0/ && $(COPY_FILE) --parents ../sangueDaUFRJ/mainwindow.ui ../sangueDaUFRJ/mainmenu.ui ../sangueDaUFRJ/newdrive.ui ../sangueDaUFRJ/about.ui ../sangueDaUFRJ/report.ui .tmp/sangueDaUFRJ1.0.0/ && (cd `dirname .tmp/sangueDaUFRJ1.0.0` && $(TAR) sangueDaUFRJ1.0.0.tar sangueDaUFRJ1.0.0 && $(COMPRESS) sangueDaUFRJ1.0.0.tar) && $(MOVE) `dirname .tmp/sangueDaUFRJ1.0.0`/sangueDaUFRJ1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/sangueDaUFRJ1.0.0
 
 
 clean:compiler_clean 
@@ -496,24 +516,78 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mainmenu.cpp moc_newdrive.cpp moc_about.cpp moc_report.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mainmenu.cpp moc_newdrive.cpp moc_about.cpp moc_report.cpp
 moc_mainwindow.cpp: /Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
 		../sangueDaUFRJ/mainwindow.h
 	/Users/Damasceno/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/Damasceno/Downloads/Ling Prog - Project/SangueUFRJ/sbvbproject/dev/sangueDaUFRJ' -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Damasceno/Qt/5.3/clang_64/lib ../sangueDaUFRJ/mainwindow.h -o moc_mainwindow.cpp
 
+moc_mainmenu.cpp: /Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		../sangueDaUFRJ/mainmenu.h
+	/Users/Damasceno/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/Damasceno/Downloads/Ling Prog - Project/SangueUFRJ/sbvbproject/dev/sangueDaUFRJ' -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Damasceno/Qt/5.3/clang_64/lib ../sangueDaUFRJ/mainmenu.h -o moc_mainmenu.cpp
+
+moc_newdrive.cpp: /Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		../sangueDaUFRJ/newdrive.h
+	/Users/Damasceno/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/Damasceno/Downloads/Ling Prog - Project/SangueUFRJ/sbvbproject/dev/sangueDaUFRJ' -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Damasceno/Qt/5.3/clang_64/lib ../sangueDaUFRJ/newdrive.h -o moc_newdrive.cpp
+
+moc_about.cpp: /Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		../sangueDaUFRJ/about.h
+	/Users/Damasceno/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/Damasceno/Downloads/Ling Prog - Project/SangueUFRJ/sbvbproject/dev/sangueDaUFRJ' -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Damasceno/Qt/5.3/clang_64/lib ../sangueDaUFRJ/about.h -o moc_about.cpp
+
+moc_report.cpp: /Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		../sangueDaUFRJ/report.h
+	/Users/Damasceno/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/Damasceno/Qt/5.3/clang_64/mkspecs/macx-clang -I'/Users/Damasceno/Downloads/Ling Prog - Project/SangueUFRJ/sbvbproject/dev/sangueDaUFRJ' -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/Damasceno/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/Damasceno/Qt/5.3/clang_64/lib ../sangueDaUFRJ/report.h -o moc_report.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_mainmenu.h
+compiler_uic_make_all: ui_mainwindow.h ui_mainmenu.h ui_newdrive.h ui_about.h ui_report.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_mainmenu.h
+	-$(DEL_FILE) ui_mainwindow.h ui_mainmenu.h ui_newdrive.h ui_about.h ui_report.h
 ui_mainwindow.h: ../sangueDaUFRJ/mainwindow.ui
 	/Users/Damasceno/Qt/5.3/clang_64/bin/uic ../sangueDaUFRJ/mainwindow.ui -o ui_mainwindow.h
 
 ui_mainmenu.h: ../sangueDaUFRJ/mainmenu.ui
 	/Users/Damasceno/Qt/5.3/clang_64/bin/uic ../sangueDaUFRJ/mainmenu.ui -o ui_mainmenu.h
+
+ui_newdrive.h: ../sangueDaUFRJ/newdrive.ui
+	/Users/Damasceno/Qt/5.3/clang_64/bin/uic ../sangueDaUFRJ/newdrive.ui -o ui_newdrive.h
+
+ui_about.h: ../sangueDaUFRJ/about.ui
+	/Users/Damasceno/Qt/5.3/clang_64/bin/uic ../sangueDaUFRJ/about.ui -o ui_about.h
+
+ui_report.h: ../sangueDaUFRJ/report.ui
+	/Users/Damasceno/Qt/5.3/clang_64/bin/uic ../sangueDaUFRJ/report.ui -o ui_report.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -530,18 +604,96 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 main.o: ../sangueDaUFRJ/main.cpp ../sangueDaUFRJ/mainwindow.h \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
-		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../sangueDaUFRJ/main.cpp
 
 mainwindow.o: ../sangueDaUFRJ/mainwindow.cpp ../sangueDaUFRJ/mainwindow.h \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		ui_mainwindow.h
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		ui_mainwindow.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../sangueDaUFRJ/mainwindow.cpp
+
+mainmenu.o: ../sangueDaUFRJ/mainmenu.cpp ../sangueDaUFRJ/mainmenu.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		ui_mainmenu.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainmenu.o ../sangueDaUFRJ/mainmenu.cpp
+
+newdrive.o: ../sangueDaUFRJ/newdrive.cpp ../sangueDaUFRJ/newdrive.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/report.h \
+		../sangueDaUFRJ/about.h \
+		ui_newdrive.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QCloseEvent \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newdrive.o ../sangueDaUFRJ/newdrive.cpp
+
+about.o: ../sangueDaUFRJ/about.cpp ../sangueDaUFRJ/about.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/report.h \
+		ui_about.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QCloseEvent \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o about.o ../sangueDaUFRJ/about.cpp
+
+report.o: ../sangueDaUFRJ/report.cpp ../sangueDaUFRJ/report.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../sangueDaUFRJ/mainwindow.h \
+		../sangueDaUFRJ/mainmenu.h \
+		../sangueDaUFRJ/newdrive.h \
+		../sangueDaUFRJ/about.h \
+		ui_report.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDesktopWidget \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdesktopwidget.h \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QCloseEvent \
+		/Users/Damasceno/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o report.o ../sangueDaUFRJ/report.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_mainmenu.o: moc_mainmenu.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainmenu.o moc_mainmenu.cpp
+
+moc_newdrive.o: moc_newdrive.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_newdrive.o moc_newdrive.cpp
+
+moc_about.o: moc_about.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_about.o moc_about.cpp
+
+moc_report.o: moc_report.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_report.o moc_report.cpp
 
 ####### Install
 
