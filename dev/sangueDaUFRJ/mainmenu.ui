@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Sangue da UFRJ</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon_sangue.ico</normaloff>icon_sangue.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">

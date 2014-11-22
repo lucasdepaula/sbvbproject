@@ -2,7 +2,6 @@
 #include "mainmenu.h"
 #include <QApplication>
 #include <QDesktopWidget>
-// #include <QtSql> // adicionar no PRO ->   QT += sql
 
 int main(int argc, char *argv[])
 {
