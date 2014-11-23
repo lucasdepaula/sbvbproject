@@ -20,45 +20,45 @@ MainMenu::~MainMenu()
 void MainMenu::on_pushButton_clicked()
 {
     //add code here to open the main window at the center of the screen
-    inscricao = new MainWindow();
+    signup = new MainWindow();
 
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
-    int x = (screenGeometry.width()-inscricao->width()) / 2;
-    int y = (screenGeometry.height()-inscricao->height()) / 2;
-    inscricao->move(x, y);
-    inscricao->show();
+    int x = (screenGeometry.width()-signup->width()) / 2;
+    int y = (screenGeometry.height()-signup->height()) / 2;
+    signup->move(x, y);
+    signup->show();
     this->close();
 }
 
 void MainMenu::on_pushButton_2_clicked()
 {
-    mutirao = new NewDrive();
+    bloodDrive = new NewDrive();
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
-    int x = (screenGeometry.width()-mutirao->width()) / 2;
-    int y = (screenGeometry.height()-mutirao->height()) / 2;
-    mutirao->move(x, y);
-    mutirao->show();
+    int x = (screenGeometry.width()-bloodDrive->width()) / 2;
+    int y = (screenGeometry.height()-bloodDrive->height()) / 2;
+    bloodDrive->move(x, y);
+    bloodDrive->show();
     this->close();
 }
 
 void MainMenu::on_pushButton_3_clicked()
 {
-    relatorio = new Report();
+    report = new Report();
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
-    int x = (screenGeometry.width()-relatorio->width()) / 2;
-    int y = (screenGeometry.height()-relatorio->height()) / 2;
-    relatorio->move(x, y);
-    relatorio->show();
+    int x = (screenGeometry.width()-report->width()) / 2;
+    int y = (screenGeometry.height()-report->height()) / 2;
+    report->move(x, y);
+    report->show();
     this->close();
 }
 
 void MainMenu::on_pushButton_4_clicked()
 {
-    sobre = new About();
+    about = new About();
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
-    int x = (screenGeometry.width()-sobre->width()) / 2;
-    int y = (screenGeometry.height()-sobre->height()) / 2;
-    sobre->move(x, y);
-    sobre->show();
+    int x = (screenGeometry.width()-about->width()) / 2;
+    int y = (screenGeometry.height()-about->height()) / 2;
+    about->move(x, y);
+    about->show();
     this->close();
 }

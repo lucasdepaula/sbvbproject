@@ -31,10 +31,10 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
-    QMainWindow *inscricao;
-    QMainWindow *mutirao;
-    QMainWindow *relatorio;
-    QMainWindow *sobre;
+    QMainWindow *signup;
+    QMainWindow *bloodDrive;
+    QMainWindow *report;
+    QMainWindow *about;
 };
 
 #endif // MAINMENU_H

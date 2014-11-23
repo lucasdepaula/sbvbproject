@@ -28,7 +28,7 @@ void MainWindow::on_pushButton_2_clicked() //"Salvar e finalizar"
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    // volta para o form principal
+    // returns to main menu
     this->close();
 
 }
