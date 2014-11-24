@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "mainmenu.h"
 #include "qstring.h"
+#include <QSqlDatabase>
 //#include "newdrive.h"
 
 namespace Ui {
@@ -34,6 +35,7 @@ private:
     Ui::MainWindow *ui;
     QMainWindow *appmenu;
     QString getMajor();
+    QSqlDatabase mydb;
 };
 
 #endif // MAINWINDOW_H

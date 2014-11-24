@@ -15,9 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->lineEdit_2->setEnabled(false);
     setStyleSheet("background-image: url(./sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
-    QSqlDatabase mydb = QSqlDatabase::addDatabase("QSQLITE");
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("SangueDB.db");
-    mydb.open();
+    mydb.open();   // colocar mydb como membro de MainWindow
 }
 
 MainWindow::~MainWindow()
@@ -34,7 +34,7 @@ void MainWindow::on_pushButton_clicked() //"Salvar e criar próximo"
     major = getMajor();
     semester = ui->comboBox->currentText();
     obs = ui->textEdit->toPlainText();
-    QSqlQuery qry("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ('"+major+"','"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
+    QSqlQuery qry("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ('"+major+"','"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');",mydb);
     //Saves (ok) and opens a new sign up form
     ui->lineEdit->clear();
     ui->lineEdit_4->clear();
