@@ -14,8 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->lineEdit_2->setEnabled(false);
-    if (ui->comboBox_8->currentText()== "Outro")
-        ui->lineEdit_2->setEnabled(true);
     setStyleSheet("background-image: url(./sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
     QSqlDatabase mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("SangueDB.db");
@@ -79,4 +77,15 @@ QString MainWindow::getMajor()
         return ui->lineEdit_2->text();
     else
         return ui->comboBox_8->currentText();
+}
+
+void MainWindow::on_comboBox_8_currentTextChanged(const QString &arg1)
+{
+    if (arg1 == "Outro")
+        ui->lineEdit_2->setEnabled(true);
+    else
+    {
+        ui->lineEdit_2->setEnabled(false);
+        ui->lineEdit_2->clear();
+    }
 }

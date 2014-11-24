@@ -28,6 +28,8 @@ private slots:
 
     void closeEvent(QCloseEvent *);
 
+    void on_comboBox_8_currentTextChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     QMainWindow *appmenu;
