@@ -25,6 +25,8 @@ private slots:
     void closeEvent(QCloseEvent *);
 
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::NewDrive *ui;
     QMainWindow *appmenu;

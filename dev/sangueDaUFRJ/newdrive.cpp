@@ -32,3 +32,9 @@ void NewDrive::closeEvent(QCloseEvent *)
     appmenu->show();
     this->close();
 }
+
+void NewDrive::on_pushButton_4_clicked()
+{
+    //adds new day in the list
+  //  listWidget
+}
