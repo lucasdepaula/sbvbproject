@@ -36,5 +36,8 @@ void NewDrive::closeEvent(QCloseEvent *)
 void NewDrive::on_pushButton_4_clicked()
 {
     //adds new day in the list
-  //  listWidget
+//    QString date = ui->dateEdit->displayFormat();
+//    ui->dateEdit->
+//    ui->listWidget->addItem();
+
 }
