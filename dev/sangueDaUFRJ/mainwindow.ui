@@ -53,52 +53,52 @@
     </property>
     <item>
      <property name="text">
-      <string>1º</string>
+      <string>1</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>2º</string>
+      <string>2</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>3º</string>
+      <string>3</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>4º</string>
+      <string>4</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>5º</string>
+      <string>5</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>6º</string>
+      <string>6</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>7 º</string>
+      <string>7</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>8º</string>
+      <string>8</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>9º</string>
+      <string>9</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>10º</string>
+      <string>10</string>
      </property>
     </item>
     <item>
@@ -396,11 +396,121 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background: rgb(255,255,255);</string>
     </property>
     <item>
      <property name="text">
       <string>Engenharia de Computação e Informação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Civil</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Materiais</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Produção</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Elétrica</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Eletrônica e de Computação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Mecânica</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Metalúrgica</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Naval e Oceânica</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Nuclear</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia (Ciclo Básico)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Ambiental</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Controle e Automação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Petróleo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Alimentos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Bioprocessos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Química</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Química Industrial</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Física</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Matemática</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BCMT</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Química</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ciência da Computação</string>
      </property>
     </item>
     <item>
@@ -412,7 +522,7 @@
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>134</x>
       <y>160</y>
       <width>171</width>
       <height>20</height>
@@ -420,6 +530,9 @@
     </property>
     <property name="styleSheet">
      <string notr="true"/>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_18">

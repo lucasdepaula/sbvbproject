@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mainmenu.h"
+#include "qstring.h"
 //#include "newdrive.h"
 
 namespace Ui {
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QMainWindow *appmenu;
+    QString getMajor();
 };
 
 #endif // MAINWINDOW_H
