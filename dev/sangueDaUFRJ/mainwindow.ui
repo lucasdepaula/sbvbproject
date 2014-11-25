@@ -32,8 +32,8 @@
    <string>Nova Inscrição - Sangue da UFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon_sangue.ico</normaloff>icon_sangue.ico</iconset>
+   <iconset resource="Resource.qrc">
+    <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -241,7 +241,7 @@
      <rect>
       <x>90</x>
       <y>280</y>
-      <width>141</width>
+      <width>241</width>
       <height>20</height>
      </rect>
     </property>
@@ -400,7 +400,22 @@
     </property>
     <item>
      <property name="text">
-      <string>Engenharia de Computação e Informação</string>
+      <string>BCMT</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ciência da Computação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Física</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia Ambiental</string>
      </property>
     </item>
     <item>
@@ -410,7 +425,32 @@
     </item>
     <item>
      <property name="text">
+      <string>Engenharia de Alimentos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Bioprocessos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Computação e Informação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Controle e Automação</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Engenharia de Materiais</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engenharia de Petróleo</string>
      </property>
     </item>
     <item>
@@ -450,47 +490,12 @@
     </item>
     <item>
      <property name="text">
-      <string>Engenharia (Ciclo Básico)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Engenharia Ambiental</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Engenharia de Controle e Automação</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Engenharia de Petróleo</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Engenharia de Alimentos</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Engenharia de Bioprocessos</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
       <string>Engenharia Química</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Química Industrial</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Física</string>
+      <string>Engenharia (Ciclo Básico)</string>
      </property>
     </item>
     <item>
@@ -500,17 +505,12 @@
     </item>
     <item>
      <property name="text">
-      <string>BCMT</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
       <string>Química</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Ciência da Computação</string>
+      <string>Química Industrial</string>
      </property>
     </item>
     <item>
@@ -652,6 +652,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

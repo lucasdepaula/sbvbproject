@@ -33,6 +33,6 @@ FORMS    += mainwindow.ui \
     report.ui
 
 OTHER_FILES += \
-    logo sangue.jpg \
-    logo sangue.jpg \
-    logo sangue.png
+
+RESOURCES += \
+    Resource.qrc

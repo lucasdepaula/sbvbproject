@@ -9,7 +9,7 @@ NewDrive::NewDrive(QWidget *parent) :
     ui(new Ui::NewDrive)
 {
     ui->setupUi(this);
-    setStyleSheet("background-image: url(./sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
+    setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
 }
 
 NewDrive::~NewDrive()

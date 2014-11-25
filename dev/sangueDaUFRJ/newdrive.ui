@@ -32,8 +32,8 @@
    <string>Novo Mutirão - Sangue UFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon_sangue.ico</normaloff>icon_sangue.ico</iconset>
+   <iconset resource="Resource.qrc">
+    <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -392,6 +392,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -32,8 +32,8 @@
    <string>Sobre - SangueUFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon_sangue.ico</normaloff>icon_sangue.ico</iconset>
+   <iconset resource="Resource.qrc">
+    <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -76,23 +76,44 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>80</y>
-     <width>361</width>
-     <height>351</height>
+     <x>80</x>
+     <y>230</y>
+     <width>321</width>
+     <height>181</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background:transparent;</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;SangueUFRJ foi desenvolvido com o intuito de atingir o maior número de pessoas na doação de sangue para o hospital universitário (HUCFF), auxiliando na organização de mutirões pelo câmpus.&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Alunos Envolvidos @ECI&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Igor Rocha, Lucas Cabral, Lucas Santos, Rafael Damasceno, Thiago Maia&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;versão 1.0.0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Alunos Envolvidos @ECI&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Igor Rocha, Lucas Cabral, Lucas Santos, Rafael Damasceno, Thiago Maia&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Orientador: Sérgio Villas Boas &amp;lt;sbvb.com.br&amp;gt;&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;versão 1.0.0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>70</y>
+     <width>381</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:transparent;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;SangueUFRJ foi desenvolvido com o intuito de atingir o maior número de pessoas na doação de sangue para o hospital universitário (HUCFF), auxiliando na organização de mutirões pelo câmpus.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

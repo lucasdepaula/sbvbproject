@@ -32,8 +32,8 @@
    <string>Gerar Relatório - SangueUFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon_sangue.ico</normaloff>icon_sangue.ico</iconset>
+   <iconset resource="Resource.qrc">
+    <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -131,6 +131,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
