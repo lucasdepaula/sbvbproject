@@ -36,6 +36,7 @@ private:
     QMainWindow *appmenu;
     QString getMajor();
     QSqlDatabase mydb;
+    void saveDonorInfo();
 };
 
 #endif // MAINWINDOW_H

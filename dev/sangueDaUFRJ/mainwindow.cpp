@@ -25,17 +25,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//saves and opens a new donor signup window
 void MainWindow::on_pushButton_clicked() //"Salvar e criar próximo"
 {
-    QString major, name, email, phone, semester, obs;
-    name = ui->lineEdit->text();
-    email = ui->lineEdit_4->text();
-    phone = ui->lineEdit_3->text();
-    major = getMajor();
-    semester = ui->comboBox->currentText();
-    obs = ui->textEdit->toPlainText();
-    QSqlQuery qry("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ('"+major+"','"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');",mydb);
-    //Saves (ok) and opens a new sign up form
+    saveDonorInfo();
     ui->lineEdit->clear();
     ui->lineEdit_4->clear();
     ui->lineEdit_3->clear();
@@ -48,9 +41,11 @@ void MainWindow::on_pushButton_clicked() //"Salvar e criar próximo"
     return;
 }
 
+//Saves and goes back to main menu
 void MainWindow::on_pushButton_2_clicked() //"Salvar e finalizar"
 {
-    //Saves and opens a new sign up form
+    saveDonorInfo();
+    this->close();
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -71,6 +66,7 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 }
 
+//appropriately gets the major attribute either from the dropdown menu or from the line edit box
 QString MainWindow::getMajor()
 {
     if(ui->comboBox_8->currentText()== "Outro")
@@ -79,6 +75,7 @@ QString MainWindow::getMajor()
         return ui->comboBox_8->currentText();
 }
 
+//enables line edit for entering major if it is not in the predefined list
 void MainWindow::on_comboBox_8_currentTextChanged(const QString &arg1)
 {
     if (arg1 == "Outro")
@@ -89,3 +86,16 @@ void MainWindow::on_comboBox_8_currentTextChanged(const QString &arg1)
         ui->lineEdit_2->clear();
     }
 }
+
+//saves donor information to database
+void MainWindow::saveDonorInfo(){
+    QString major, name, email, phone, semester, obs;
+    name = ui->lineEdit->text();
+    email = ui->lineEdit_4->text();
+    phone = ui->lineEdit_3->text();
+    major = getMajor();
+    semester = ui->comboBox->currentText();
+    obs = ui->textEdit->toPlainText();
+    QSqlQuery qry("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ('"+major+"','"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');",mydb);
+}
+

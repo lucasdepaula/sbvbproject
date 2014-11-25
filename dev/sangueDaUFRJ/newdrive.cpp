@@ -2,7 +2,8 @@
 #include "ui_newdrive.h"
 #include <QDesktopWidget>
 #include <QCloseEvent>
-#include <QtSql/QSql>
+#include <QtSql>
+#include <QSqlQuery>
 
 NewDrive::NewDrive(QWidget *parent) :
     QMainWindow(parent),
@@ -35,8 +36,16 @@ void NewDrive::closeEvent(QCloseEvent *)
 
 void NewDrive::on_pushButton_4_clicked()
 {
-//    adds new day in the list
+    //adds new day in the list
     QString date = ui->dateEdit->text();
     ui->listWidget->addItem(date);
+}
 
+//saves blood drive information to database --- NOT IMPLEMENTED
+void NewDrive::saveBloodDriveInfo(){
+    QString name;
+    name = ui->lineEdit->text();
+    ui->listWidget->;
+
+    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"+name+"'');",mydb);
 }

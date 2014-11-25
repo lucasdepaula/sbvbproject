@@ -30,6 +30,7 @@ private slots:
 private:
     Ui::NewDrive *ui;
     QMainWindow *appmenu;
+    void saveBloodDriveInfo();
 };
 
 #endif // NEWDRIVE_H
