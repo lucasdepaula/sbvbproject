@@ -10,5 +10,5 @@ databaseCreator::databaseCreator()
 }
 
 void databaseCreator::createDatabase(){
-    QSqlQuery qry("CREATE TABLE "Donor" ("id" INTEGER PRIMARY KEY   AUTOINCREMENT ,major VARCHAR,"name" VARCHAR,"email" VARCHAR,"phone" VARCHAR DEFAULT (null) ,"semester" VARCHAR DEFAULT (null) ,"obs" VARCHAR DEFAULT (null) );",mydb);
+    QSqlQuery qry("CREATE TABLE Donor (id INTEGER PRIMARY KEY   AUTOINCREMENT ,major VARCHAR,name TEXT,email TEXT,phone TEXT DEFAULT (null) ,semester TEXT DEFAULT (null) ,obs TEXT DEFAULT (null) );",mydb);
 }
