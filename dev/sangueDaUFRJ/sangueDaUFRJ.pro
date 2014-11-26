@@ -35,4 +35,4 @@ FORMS    += mainwindow.ui \
 OTHER_FILES += \
 
 RESOURCES += \
-    Resource.qrc
+    ../Resource.qrc

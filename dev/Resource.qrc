@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>data/icon_sangue.ico</file>
+        <file>data/icon_sangue-bak.ico</file>
+        <file>data/logo sangue.jpg</file>
+        <file>data/logo.png</file>
+        <file>data/sangue.png</file>
+    </qresource>
+</RCC>
