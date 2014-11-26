@@ -16,8 +16,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_2->setEnabled(false);
     setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
     mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("SangueDB.db");
+    mydb.setDatabaseName(":/database/data/sangueDB.db");
     mydb.open();   // colocar mydb como membro de MainWindow
+    if (mydb.open()){
+        qDebug()<<"Hello";
+    }
 }
 
 MainWindow::~MainWindow()
