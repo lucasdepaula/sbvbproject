@@ -6,6 +6,7 @@
 #include "newdrive.h"
 #include "report.h"
 #include "about.h"
+#include "databasecreator.h"
 
 namespace Ui {
 class MainMenu;

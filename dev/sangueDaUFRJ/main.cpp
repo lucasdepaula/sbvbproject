@@ -2,23 +2,12 @@
 #include "mainmenu.h"
 #include <QApplication>
 #include <QDesktopWidget>
-//#include <QtSql>
-//#include <QSql>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    //MainWindow w;
     MainMenu w;
-
-    //experimenting with SQLite
-//    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-//         db.setHostName("localhost");
-//         db.setDatabaseName("sangueDB");
-//         db.setUserName("");
-//         db.setPassword("");
-//         bool ok = db.open();
 
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width()-w.width()) / 2;

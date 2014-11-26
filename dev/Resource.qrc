@@ -5,7 +5,4 @@
         <file>data/logo.png</file>
         <file>data/sangue.png</file>
     </qresource>
-    <qresource prefix="/database">
-        <file>data/sangueDB.db</file>
-    </qresource>
 </RCC>

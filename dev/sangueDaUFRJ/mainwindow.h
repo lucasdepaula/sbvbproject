@@ -5,7 +5,6 @@
 #include "mainmenu.h"
 #include "qstring.h"
 #include <QSqlDatabase>
-//#include "newdrive.h"
 
 namespace Ui {
 class MainWindow;
