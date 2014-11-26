@@ -16,9 +16,31 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_2->setEnabled(false);
     ui->comboBox_2->clear();
     ui->comboBox_5->clear();
-    QStringList testList;
-    testList << "Hello" <<"teste";
-    ui->comboBox_2->addItems(testList);
+
+/********** magic **********/
+
+    QSqlQueryModel * modal = new QSqlQueryModel();
+    //db must be opened -> I considered it will be opened by MainMenu. Otherwise, here is the place for "open()" method
+    QSqlQuery* qry = new QSqlQuery(mydb);  //mydb is the database
+    qry->prepare("select date from DonationTime");
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->comboBox_2->setModel(modal);
+    qry->prepare("select time from DonationTime");    //I wonder if this repetition of the code works, I guess so
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->comboBox_5->setModel(modal);
+
+
+    //you may close the db here if you want
+
+/**********\magic **********/
+
+
+
+//    QStringList testList;
+//    testList << "Hello" <<"teste";
+//    ui->comboBox_2->addItems(testList);
     setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
