@@ -32,7 +32,7 @@
    <string>Novo Mutirão - Sangue UFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Resource.qrc">
+   <iconset resource="../Resource.qrc">
     <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -117,6 +117,28 @@
       <width>110</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>8</hour>
+      <minute>0</minute>
+      <second>0</second>
+      <year>2015</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
+    </property>
+    <property name="currentSection">
+     <enum>QDateTimeEdit::DaySection</enum>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -393,7 +415,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="../Resource.qrc"/>
  </resources>
  <connections/>
 </ui>
