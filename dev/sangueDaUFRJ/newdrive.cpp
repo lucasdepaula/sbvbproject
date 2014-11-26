@@ -39,6 +39,7 @@ void NewDrive::on_pushButton_4_clicked()
     //adds new day in the list
     QString date = ui->dateEdit->text();
     ui->listWidget->addItem(date);
+    QSqlQuery qry("INSERT INTO Donor (name) VALUES ('"+ui->lineEdit->text()+"')");
 }
 
 //saves blood drive information to database --- NOT IMPLEMENTED
