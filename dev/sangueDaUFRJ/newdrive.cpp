@@ -45,7 +45,7 @@ void NewDrive::on_pushButton_4_clicked()
 void NewDrive::saveBloodDriveInfo(){
     QString name;
     name = ui->lineEdit->text();
-    ui->listWidget->;
+//    ui->listWidget->;
 
-    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"+name+"'');",mydb);
+//    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"+name+"'');",mydb);
 }
