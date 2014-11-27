@@ -36,6 +36,7 @@ private:
     QMainWindow *bloodDrive;
     QMainWindow *report;
     QMainWindow *about;
+    void createDatabase();
 };
 
 #endif // MAINMENU_H

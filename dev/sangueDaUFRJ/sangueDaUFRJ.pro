@@ -18,15 +18,13 @@ SOURCES += main.cpp\
     mainmenu.cpp \
     newdrive.cpp \
     about.cpp \
-    report.cpp \
-    databasecreator.cpp
+    report.cpp
 
 HEADERS  += mainwindow.h \
     mainmenu.h \
     newdrive.h \
     about.h \
-    report.h \
-    databasecreator.h
+    report.h
 
 FORMS    += mainwindow.ui \
     mainmenu.ui \

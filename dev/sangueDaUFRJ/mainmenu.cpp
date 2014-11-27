@@ -10,7 +10,10 @@ MainMenu::MainMenu(QWidget *parent) :
 {
     ui->setupUi(this);
     setStyleSheet("background: url(:/image/data/sangue.png) top 100%;font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px;");
-
+    if(!(QFile::exists("sangueDB.db")))
+    {
+        MainMenu::createDatabase();
+    }
 }
 
 MainMenu::~MainMenu()
@@ -62,4 +65,14 @@ void MainMenu::on_pushButton_4_clicked()
     about->move(x, y);
     about->show();
     this->close();
+}
+
+void MainMenu::createDatabase(){
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
+    mydb.setDatabaseName("sangueDB.db");
+    QSqlQuery qry1("CREATE TABLE Donor (id INTEGER PRIMARY KEY AUTOINCREMENT ,majorID INTEGER,name TEXT,email TEXT,phone TEXT DEFAULT (null) ,semester TEXT DEFAULT (null) ,obs TEXT DEFAULT (null) );",mydb);
+    QSqlQuery qry2("CREATE TABLE BloodDrive (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, startDate TEXT);",mydb);
+    QSqlQuery qry3("CREATE TABLE DonationTime (id INTEGER AUTOINCREMENT, date TEXT NOT NULL, time TEXT NOT NULL, maxDonors INTEGER DEFAULT (0), PRIMARY KEY (id, date, time));",mydb);
+    QSqlQuery qry4("CREATE TABLE BloodDriveDonor (id INTEGER AUTOINCREMENT, bloodDriveID INTEGER NOT NULL, donorID INTEGER NOT NULL, PRIMARY KEY (id, bloodDriveID, donorID));",mydb);
+    QSqlQuery qry5("CREATE TABLE Major (id INTEGER AUTOINCREMENT, listedName TEXT NOT NULL, inputName TEXT, PRIMARY KEY(id));",mydb);
 }
