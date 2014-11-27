@@ -36,6 +36,7 @@ private:
     QMainWindow *appmenu;
     void saveBloodDriveInfo();
     QSqlDatabase mydb;
+    void sortListWidget();
 };
 
 #endif // NEWDRIVE_H

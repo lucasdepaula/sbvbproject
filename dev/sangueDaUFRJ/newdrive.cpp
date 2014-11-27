@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QtSql>
 #include <QSqlQuery>
+#include <QList>
 #define TEMP "Creating"
 
 NewDrive::NewDrive(QWidget *parent) :
@@ -16,21 +17,19 @@ NewDrive::NewDrive(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"TEMP"');",mydb);
+    QSqlQuery auxQry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, scheduledDate TEXT NOT NULL, scheduledTime TEXT NOT NULL, maxDonors8 INTEGER DEFAULT(0),maxDonors9 INTEGER DEFAULT(0),maxDonors10 INTEGER DEFAULT(0),maxDonors11 INTEGER DEFAULT(0),maxDonors12 INTEGER DEFAULT(0),maxDonors13 INTEGER DEFAULT(0));",mydb);
 }
 
 NewDrive::~NewDrive()
 {
+    QSqlQuery qry("DROP TABLE BufferTable;");
     mydb.close();
     delete ui;
 }
 
+//"Voltar"
 void NewDrive::on_pushButton_clicked()
 {
-    QSqlQuery qry("SELECT id FROM BloodDrive WHERE name = '"TEMP"';");
-    QString id = qry.value(0).toString();
-    QSqlQuery qry2("DELETE FROM BloodDrive WHERE name = '"TEMP"';");
-    QSqlQuery qry3("DELETE FROM DonationTime WHERE BloodDriveID = '"+id+"');");
     this->close();
 }
 
@@ -45,18 +44,28 @@ void NewDrive::closeEvent(QCloseEvent *)
     this->close();
 }
 
+//"Adicionar"
+//adds new day in the list
 void NewDrive::on_pushButton_4_clicked()
 {
-    //adds new day in the list
     QString date = ui->dateEdit->text();
     ui->listWidget->addItem(date);
-    QSqlQuery qry("INSERT INTO DonationTime (date) VALUES ('"+ui->lineEdit->text()+"')");
+    ui->listWidget->sortItems();
+    QSqlQuery qry;
+
+    qry.prepare("INSERT INTO BufferTable (scheduledDate, scheduled)")
 }
 
 //saves blood drive information to database --- NOT IMPLEMENTED
 void NewDrive::saveBloodDriveInfo(){
+    QSqlQuery qry;
     QString name;
     name = ui->lineEdit->text();
+
+//  QList<QListWidgetItem> list = ui->listWidget->items();
+//    for (int i=0;i<list.size();i++){
+//        qry.prepare("INSERT INTO DonationTime (id, scheduledDate)");
+//    }
 //    ui->listWidget->;
 
 //    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"+name+"'');",mydb);
@@ -65,22 +74,23 @@ void NewDrive::saveBloodDriveInfo(){
 //saves and goes back to mainmenu
 void NewDrive::on_pushButton_3_clicked() //"Salvar e finalizar"
 {
-    saveBloodDriveInfo()
+    saveBloodDriveInfo();
     this->close();
 }
 
 //saves and opens a new drive window
-void NewDrive::on_pushButton_2_clicked() //"Salvar e criar próximo"
-{
-    saveBloodDriveInfo();
-    ui->lineEdit->clear();
-    ui->dateEdit->setDate(QDate::currentDate());
-    ui->spinBox->setValue(10);
-    ui->spinBox_2->setValue(0);
-    ui->spinBox_3->setValue(10);
-    ui->spinBox_4->setValue(0);
-    ui->spinBox_5->setValue(7);
-    ui->spinBox_6->setValue(0);
-    ui->listWidget->clear();
-    return;
-}
+//void NewDrive::on_pushButton_2_clicked() //"Salvar e criar próximo"
+//{
+//    saveBloodDriveInfo();
+//    ui->lineEdit->clear();
+//    ui->dateEdit->setDate(QDate::currentDate());
+//    ui->spinBox->setValue(10);
+//    ui->spinBox_2->setValue(0);
+//    ui->spinBox_3->setValue(10);
+//    ui->spinBox_4->setValue(0);
+//    ui->spinBox_5->setValue(7);
+//    ui->spinBox_6->setValue(0);
+//    ui->listWidget->clear();
+//    return;
+//}
+
