@@ -100,7 +100,7 @@ void MainMenu::createDatabase(){
     QSqlQuery qry1("CREATE TABLE Donor (id INTEGER PRIMARY KEY AUTOINCREMENT ,majorID INTEGER,name TEXT,email TEXT,phone TEXT DEFAULT (null) ,semester TEXT DEFAULT (null) ,obs TEXT DEFAULT (null) );",mydb);
     QSqlQuery qry2("CREATE TABLE BloodDrive (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, startDate TEXT);",mydb);
     QSqlQuery qry3("CREATE TABLE DonationTime (id INTEGER NOT NULL, scheduledDate TEXT NOT NULL, scheduledTime TEXT NOT NULL, bloodDriveId INTEGER NOT NULL, maxDonors INTEGER DEFAULT(0), PRIMARY KEY (id, scheduledDate, scheduledTime));",mydb);
-    QSqlQuery qry4("CREATE TABLE DonorSchedule (id INTEGER NOT NULL, donationTimeID INTEGER NOT NULL, donorID INTEGER NOT NULL, PRIMARY KEY (id, bloodDriveID, donorID));",mydb);
+    QSqlQuery qry4("CREATE TABLE DonorSchedule (id INTEGER NOT NULL, donationTimeID INTEGER NOT NULL, donorID INTEGER NOT NULL, PRIMARY KEY (id, donationTimeID, donorID));",mydb);
     QSqlQuery qry5("CREATE TABLE Major (id INTEGER PRIMARY KEY AUTOINCREMENT, listedName TEXT NOT NULL, inputName TEXT DEFAULT NULL);",mydb);
 }
 
