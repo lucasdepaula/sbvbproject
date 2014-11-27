@@ -37,6 +37,8 @@ private:
     QMainWindow *report;
     QMainWindow *about;
     void createDatabase();
+    void populateMajors();
+    QSqlDatabase mydb;
 };
 
 #endif // MAINMENU_H
