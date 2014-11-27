@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include <QSqlQuery>
+#include <QSqlDatabase>
 
 namespace Ui {
 class Report;
@@ -29,6 +31,9 @@ private slots:
 private:
     Ui::Report *ui;
     QMainWindow *appmenu;
+    QSqlDatabase mydb;
+    QSqlQuery* qry;
+
 };
 
 
