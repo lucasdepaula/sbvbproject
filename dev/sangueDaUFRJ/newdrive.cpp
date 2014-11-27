@@ -53,7 +53,7 @@ void NewDrive::on_pushButton_4_clicked()
     ui->listWidget->sortItems();
     QSqlQuery qry;
 
-    qry.prepare("INSERT INTO BufferTable (scheduledDate, scheduled)")
+    qry.prepare("INSERT INTO BufferTable (scheduledDate, scheduled)");
 }
 
 //saves blood drive information to database --- NOT IMPLEMENTED
