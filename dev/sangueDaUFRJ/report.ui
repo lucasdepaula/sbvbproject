@@ -32,7 +32,7 @@
    <string>Gerar Relatório - SangueUFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Resource.qrc">
+   <iconset resource="../Resource.qrc">
     <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <widget class="QPushButton" name="pushButton">
@@ -89,9 +89,9 @@
   <widget class="QComboBox" name="comboBox_8">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>160</y>
-     <width>411</width>
+     <width>301</width>
      <height>20</height>
     </rect>
    </property>
@@ -110,7 +110,7 @@
    </property>
    <item>
     <property name="text">
-     <string>Mutirão eng. de computação                 01/04/2015</string>
+     <string>Engenharia de Computação e Informação</string>
     </property>
    </item>
   </widget>
@@ -130,9 +130,24 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Nome do mutirão:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>160</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>01/01/2015</string>
+    </property>
+   </item>
+  </widget>
  </widget>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="../Resource.qrc"/>
  </resources>
  <connections/>
 </ui>
