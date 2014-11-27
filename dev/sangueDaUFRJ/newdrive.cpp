@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QtSql>
 #include <QSqlQuery>
+#define TEMP "Creating"
 
 NewDrive::NewDrive(QWidget *parent) :
     QMainWindow(parent),
@@ -12,6 +13,10 @@ NewDrive::NewDrive(QWidget *parent) :
     ui->setupUi(this);
     ui->dateEdit->setDate(QDate::currentDate());
     setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
+    mydb.setDatabaseName("sangueDB.db");
+    mydb.open();
+    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"TEMP"');",mydb);
 }
 
 NewDrive::~NewDrive()
@@ -21,6 +26,10 @@ NewDrive::~NewDrive()
 
 void NewDrive::on_pushButton_clicked()
 {
+    QSqlQuery qry("SELECT id FROM BloodDrive WHERE name = '"TEMP"';");
+    QString id = qry.value(0).toString();
+    QSqlQuery qry2("DELETE FROM BloodDrive WHERE name = '"TEMP"';");
+    QSqlQuery qry3("DELETE FROM DonationTime WHERE BloodDriveID = '"+id+"');");
     this->close();
 }
 

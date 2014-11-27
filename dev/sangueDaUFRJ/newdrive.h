@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include <QSqlDatabase>
 //#include "mainmenu.h"
 
 namespace Ui {
@@ -34,6 +35,7 @@ private:
     Ui::NewDrive *ui;
     QMainWindow *appmenu;
     void saveBloodDriveInfo();
+    QSqlDatabase mydb;
 };
 
 #endif // NEWDRIVE_H
