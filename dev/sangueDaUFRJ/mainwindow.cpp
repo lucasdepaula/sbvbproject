@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     modal->setQuery(*qry);
     ui->comboBox_5->setModel(modal);
 
-
     //you may close the db here if you want
 
 /**********\magic **********/

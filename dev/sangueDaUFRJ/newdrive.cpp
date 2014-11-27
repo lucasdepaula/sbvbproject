@@ -17,7 +17,7 @@ NewDrive::NewDrive(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-    QSqlQuery auxQry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, scheduledDate TEXT NOT NULL, scheduledTime TEXT NOT NULL, maxDonors8 INTEGER DEFAULT(0),maxDonors9 INTEGER DEFAULT(0),maxDonors10 INTEGER DEFAULT(0),maxDonors11 INTEGER DEFAULT(0),maxDonors12 INTEGER DEFAULT(0),maxDonors13 INTEGER DEFAULT(0));",mydb);
+    QSqlQuery qry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, scheduledDate TEXT NOT NULL, maxDonors8 INTEGER DEFAULT(0),maxDonors9 INTEGER DEFAULT(0),maxDonors10 INTEGER DEFAULT(0),maxDonors11 INTEGER DEFAULT(0),maxDonors12 INTEGER DEFAULT(0),maxDonors13 INTEGER DEFAULT(0));",mydb);
 }
 
 NewDrive::~NewDrive()
@@ -51,24 +51,18 @@ void NewDrive::on_pushButton_4_clicked()
     QString date = ui->dateEdit->text();
     ui->listWidget->addItem(date);
     ui->listWidget->sortItems();
-    QSqlQuery qry;
+    QSqlQuery qry = new QSqlQuery(mydb);
 
-    qry.prepare("INSERT INTO BufferTable (scheduledDate, scheduled)");
+    qry.prepare("INSERT INTO BufferTable (scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13) VALUES ('"+date+"','"+ui->spinBox->value()+"','"+ui->spinBox_2->value()+"','"+ui->spinBox_3->value()+"','"+ui->spinBox_4->value()+"','"+ui->spinBox_5->value()+"','"+ui->spinBox_6->value()+"');");
+    qry.exec();
 }
 
 //saves blood drive information to database --- NOT IMPLEMENTED
 void NewDrive::saveBloodDriveInfo(){
-    QSqlQuery qry;
+    QSqlQuery qry = new QSqlQuery(mydb);
     QString name;
     name = ui->lineEdit->text();
-
-//  QList<QListWidgetItem> list = ui->listWidget->items();
-//    for (int i=0;i<list.size();i++){
-//        qry.prepare("INSERT INTO DonationTime (id, scheduledDate)");
-//    }
-//    ui->listWidget->;
-
-//    QSqlQuery qry("INSERT INTO BloodDrive (name) VALUES ('"+name+"'');",mydb);
+    qry.prepare("INSERT INTO BloodDrive (name) VALUES ('"+name+"');");
 }
 
 //saves and goes back to mainmenu
@@ -78,19 +72,9 @@ void NewDrive::on_pushButton_3_clicked() //"Salvar e finalizar"
     this->close();
 }
 
-//saves and opens a new drive window
-//void NewDrive::on_pushButton_2_clicked() //"Salvar e criar próximo"
-//{
-//    saveBloodDriveInfo();
-//    ui->lineEdit->clear();
-//    ui->dateEdit->setDate(QDate::currentDate());
-//    ui->spinBox->setValue(10);
-//    ui->spinBox_2->setValue(0);
-//    ui->spinBox_3->setValue(10);
-//    ui->spinBox_4->setValue(0);
-//    ui->spinBox_5->setValue(7);
-//    ui->spinBox_6->setValue(0);
-//    ui->listWidget->clear();
-//    return;
-//}
+//QSqlQuery qry1("CREATE TABLE Donor (id INTEGER PRIMARY KEY AUTOINCREMENT ,majorID INTEGER,name TEXT,email TEXT,phone TEXT DEFAULT (null) ,semester TEXT DEFAULT (null) ,obs TEXT DEFAULT (null) );",mydb);
+//QSqlQuery qry2("CREATE TABLE BloodDrive (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, startDate TEXT);",mydb);
+//QSqlQuery qry3("CREATE TABLE DonationTime (id INTEGER NOT NULL, scheduledDate TEXT NOT NULL, scheduledTime TEXT NOT NULL, bloodDriveId INTEGER NOT NULL, maxDonors INTEGER DEFAULT(0), PRIMARY KEY (id, scheduledDate, scheduledTime));",mydb);
+//QSqlQuery qry4("CREATE TABLE BloodDriveDonor (id INTEGER NOT NULL, bloodDriveID INTEGER NOT NULL, donorID INTEGER NOT NULL, PRIMARY KEY (id, bloodDriveID, donorID));",mydb);
+//QSqlQuery qry5("CREATE TABLE Major (id INTEGER PRIMARY KEY AUTOINCREMENT, listedName TEXT NOT NULL, inputName TEXT DEFAULT NULL);",mydb);
 
