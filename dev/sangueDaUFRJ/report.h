@@ -5,7 +5,7 @@
 #include "mainwindow.h"
 #include <QSqlQuery>
 #include <QSqlDatabase>
-
+#include <QSqlQueryModel>
 namespace Ui {
 class Report;
 }
@@ -28,12 +28,14 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_comboBox_8_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::Report *ui;
     QMainWindow *appmenu;
     QSqlDatabase mydb;
     QSqlQuery* qry;
-
+    QSqlQueryModel * modal;
 };
 
 

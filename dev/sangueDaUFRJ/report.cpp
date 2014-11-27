@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include <QtSql/QSql>
 #include <QSqlDatabase>
+#include <QSqlQueryModel>
 #include <QDebug>
 
 Report::Report(QWidget *parent) :
@@ -22,9 +23,16 @@ Report::Report(QWidget *parent) :
 
 
     qry = new QSqlQuery(mydb);  //mydb is the database
-    qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
+    //qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
+
+    qry->prepare("SELECT name FROM BloodDrive ORDER BY startdate DESC;");
     qry->exec();
 
+    // the code below fills the "mutirao" combobox
+
+    modal = new QSqlQueryModel();
+    modal->setQuery(*qry);
+    ui->comboBox_8->setModel(modal);
 
 
 
@@ -54,6 +62,9 @@ void Report::closeEvent(QCloseEvent *)
 void Report::on_pushButton_2_clicked()
 {
 
+    qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
+    qry->exec();
+
     QString name, mymajor, email, phone, bloodDrive, csv;
 
 
@@ -75,4 +86,13 @@ void Report::on_pushButton_2_clicked()
             }
 
     }
+}
+
+void Report::on_comboBox_8_currentIndexChanged(const QString &arg1)
+{
+    qry->prepare("SELECT scheduledDate FROM DonationTime WHERE bloodDriveID = (SELECT id FROM BloodDrive WHERE name LIKE '"+ arg1 + "' ORDER BY id DESC) GROUP BY scheduledDate;");
+    qry->exec();
+    modal = new QSqlQueryModel();
+    modal->setQuery(*qry);
+    ui->comboBox_9->setModel(modal);
 }
