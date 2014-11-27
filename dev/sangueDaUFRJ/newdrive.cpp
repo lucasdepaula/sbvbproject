@@ -21,6 +21,7 @@ NewDrive::NewDrive(QWidget *parent) :
 
 NewDrive::~NewDrive()
 {
+    mydb.close();
     delete ui;
 }
 
@@ -64,14 +65,14 @@ void NewDrive::saveBloodDriveInfo(){
 //saves and goes back to mainmenu
 void NewDrive::on_pushButton_3_clicked() //"Salvar e finalizar"
 {
-    //saveBloodDriveInfo()
+    saveBloodDriveInfo()
     this->close();
 }
 
 //saves and opens a new drive window
 void NewDrive::on_pushButton_2_clicked() //"Salvar e criar próximo"
 {
-    //saveBloodDriveInfo();
+    saveBloodDriveInfo();
     ui->lineEdit->clear();
     ui->dateEdit->setDate(QDate::currentDate());
     ui->spinBox->setValue(10);

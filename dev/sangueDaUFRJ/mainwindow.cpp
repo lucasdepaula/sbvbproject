@@ -17,6 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBox_2->clear();
     ui->comboBox_5->clear();
 
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
+    mydb.setDatabaseName("sangueDB.db");
+    mydb.open();
+
 /********** magic **********/
 
     QSqlQueryModel * modal = new QSqlQueryModel();
@@ -42,13 +46,12 @@ MainWindow::MainWindow(QWidget *parent) :
 //    testList << "Hello" <<"teste";
 //    ui->comboBox_2->addItems(testList);
     setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
-    mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("sangueDB.db");
-    mydb.open();
+
 }
 
 MainWindow::~MainWindow()
 {
+    mydb.close();
     delete ui;
 }
 
