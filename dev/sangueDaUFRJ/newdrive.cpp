@@ -51,18 +51,18 @@ void NewDrive::on_pushButton_4_clicked()
     QString date = ui->dateEdit->text();
     ui->listWidget->addItem(date);
     ui->listWidget->sortItems();
-    QSqlQuery qry = new QSqlQuery(mydb);
+    qry = new QSqlQuery(mydb);
 
-    qry.prepare("INSERT INTO BufferTable (scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13) VALUES ('"+date+"','"+ui->spinBox->value()+"','"+ui->spinBox_2->value()+"','"+ui->spinBox_3->value()+"','"+ui->spinBox_4->value()+"','"+ui->spinBox_5->value()+"','"+ui->spinBox_6->value()+"');");
-    qry.exec();
+    qry->prepare("INSERT INTO BufferTable (scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13) VALUES ('"+date+"','"+ui->spinBox->value()+"','"+ui->spinBox_2->value()+"','"+ui->spinBox_3->value()+"','"+ui->spinBox_4->value()+"','"+ui->spinBox_5->value()+"','"+ui->spinBox_6->value()+"');");
+    qry->exec();
 }
 
 //saves blood drive information to database --- NOT IMPLEMENTED
 void NewDrive::saveBloodDriveInfo(){
-    QSqlQuery qry = new QSqlQuery(mydb);
+    qry = new QSqlQuery(mydb);
     QString name;
     name = ui->lineEdit->text();
-    qry.prepare("INSERT INTO BloodDrive (name) VALUES ('"+name+"');");
+    qry->prepare("INSERT INTO BloodDrive (name) VALUES ('"+name+"');");
 }
 
 //saves and goes back to mainmenu

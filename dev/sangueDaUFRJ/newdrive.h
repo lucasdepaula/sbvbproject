@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "mainwindow.h"
 #include <QSqlDatabase>
+#include <QSqlQuery>
 //#include "mainmenu.h"
 
 namespace Ui {
@@ -36,6 +37,7 @@ private:
     QMainWindow *appmenu;
     void saveBloodDriveInfo();
     QSqlDatabase mydb;
+    QSqlQuery* qry;
     void sortListWidget();
 };
 
