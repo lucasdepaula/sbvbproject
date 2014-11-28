@@ -23,6 +23,9 @@ Report::Report(QWidget *parent) :
 
 
     qry = new QSqlQuery(mydb);  //mydb is the database
+    bdrive = new QSqlQuery(mydb);  //mydb is the database
+    schtime = new QSqlQuery(mydb);  //mydb is the database
+
     //qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
 
     qry->prepare("SELECT name FROM BloodDrive ORDER BY startdate DESC;");
@@ -62,10 +65,15 @@ void Report::closeEvent(QCloseEvent *)
 void Report::on_pushButton_2_clicked()
 {
 
-    qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
-    qry->exec();
+    bdrive->prepare("SELECT id, name FROM BloodDrive WHERE name LIKE '%"+ui->comboBox_8->currentText()+"%';");
+    bdrive->exec();
+    bdrive->next();
 
-    QString name, mymajor, email, phone, bloodDrive, csv;
+    schtime->prepare("SELECT id, scheduledDate, scheduledTime FROM DonationTime WHERE Donationtime.bloodDriveId = '"+bdrive->value(0).toString()+"' AND Donationtime.scheduledDate = '"+ui->comboBox_9->currentText()+"';");
+    schtime->exec();
+
+    //schtime->next();
+    QString name, email, phone;
 
 
 
@@ -75,15 +83,26 @@ void Report::on_pushButton_2_clicked()
     {
             QTextStream output(&data);
             output.setGenerateByteOrderMark(true);
-            output << "Nome;Curso;E-mail;Telefone;" << endl;
-            while (this->qry->next()) {
-                name = qry->value(2).toString();
-                mymajor = qry->value(1).toString();
-                email = qry->value(3).toString();
-                phone = qry->value(4).toString();
-                //qDebug() << name << mymajor << email << phone;
-                output << name + ";"+ mymajor+";"+email+";"+ phone + ";" << endl;
+            output << "Nome do Mutirão:;" + bdrive->value(1).toString() + ";" << endl;
+            while(this->schtime->next()) {
+                output << "Dia/Horario:;" + schtime->value(1).toString() + ";"+ schtime->value(2).toString() + ";" << endl << endl;
+                output << "Nome;E-mail;Telefone;" << endl;
+                qry->prepare("SELECT Donor.id, name, email, phone FROM Donor, DonorSchedule WHERE DonorSchedule.donationTimeID = '"+schtime->value(0).toString()+"' AND DonorSchedule.donorID = Donor.id GROUP BY Donor.name;");
+                qry->exec();
+                qDebug() << qry->executedQuery();
+                while (this->qry->next()) {
+                    name = qry->value(1).toString();
+
+                    email = qry->value(2).toString();
+
+                    phone = qry->value(3).toString();
+
+                    //qDebug() << name << email << phone;
+                    output << name +";"+email+";"+ phone + ";" << endl;
+                }
+                output << endl << endl;
             }
+
 
     }
 }

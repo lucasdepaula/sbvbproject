@@ -35,6 +35,8 @@ private:
     QMainWindow *appmenu;
     QSqlDatabase mydb;
     QSqlQuery* qry;
+    QSqlQuery* bdrive;
+    QSqlQuery* schtime;
     QSqlQueryModel * modal;
 };
 
