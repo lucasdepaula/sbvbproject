@@ -6,6 +6,12 @@
 #include <QSqlQuery>
 #include <QList>
 #define TEMP "Creating"
+#define TIME1 8
+#define TIME2 9
+#define TIME3 10
+#define TIME4 11
+#define TIME5 12
+#define TIME6 13
 
 NewDrive::NewDrive(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +23,7 @@ NewDrive::NewDrive(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-    QSqlQuery qry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, scheduledDate TEXT NOT NULL, maxDonors8 INTEGER DEFAULT(0),maxDonors9 INTEGER DEFAULT(0),maxDonors10 INTEGER DEFAULT(0),maxDonors11 INTEGER DEFAULT(0),maxDonors12 INTEGER DEFAULT(0),maxDonors13 INTEGER DEFAULT(0));",mydb);
+    QSqlQuery qry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, scheduledDate TEXT NOT NULL, maxDonors'"+TIME1+"' INTEGER DEFAULT(0),maxDonors'"+TIME2+"' INTEGER DEFAULT(0),maxDonors'"+TIME3+"' INTEGER DEFAULT(0),maxDonors'"+TIME4+"' INTEGER DEFAULT(0),maxDonors'"+TIME5+"' INTEGER DEFAULT(0),maxDonors'"+TIME6+"' INTEGER DEFAULT(0));",mydb);
 }
 
 NewDrive::~NewDrive()
@@ -53,16 +59,34 @@ void NewDrive::on_pushButton_4_clicked()
     ui->listWidget->sortItems();
     qry = new QSqlQuery(mydb);
 
-    qry->prepare("INSERT INTO BufferTable (scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13) VALUES ('"+date+"','"+ui->spinBox->value()+"','"+ui->spinBox_2->value()+"','"+ui->spinBox_3->value()+"','"+ui->spinBox_4->value()+"','"+ui->spinBox_5->value()+"','"+ui->spinBox_6->value()+"');");
+    qry->prepare("INSERT INTO BufferTable (name,scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13) VALUES ('"TEMP"','"+date+"','"+ui->spinBox->value()+"','"+ui->spinBox_2->value()+"','"+ui->spinBox_3->value()+"','"+ui->spinBox_4->value()+"','"+ui->spinBox_5->value()+"','"+ui->spinBox_6->value()+"');");
     qry->exec();
 }
 
-//saves blood drive information to database --- NOT IMPLEMENTED
+//saves blood drive information to database
 void NewDrive::saveBloodDriveInfo(){
     qry = new QSqlQuery(mydb);
     QString name;
     name = ui->lineEdit->text();
     qry->prepare("INSERT INTO BloodDrive (name) VALUES ('"+name+"');");
+    qry->exec();
+    QSqlQuery getID("SELECT id FROM BloodDrive WHERE name = '"+name+"'",mydb);
+    QSqlQuery getMaxID("SELECT MAX(id) as id FROM DonationTime");
+    QSqlQuery getCount("SELECT COUNT(*) FROM BufferTable");
+    QSqlQuery getAll("SELECT scheduledDate,maxDonors8,maxDonors9,maxDonors10,maxDonors11,maxDonors12,maxDonors13 FROM BufferTable");
+    QString bloodDriveId = getID.value(0).toString();
+    int currentDonationTimeID = getMaxID.value(0).toInt();
+    int numberOfRowsToAdd = getCount.value(0).toInt();
+    for (int i = 0; i<numberOfRowsToAdd; i++){
+        currentDonationTimeID++;
+        qry->prepare("INSERT INTO DonationTime (id, bloodDriveID) VALUES ('"+currentDonationTimeID+"','"+bloodDriveID+"');");
+        qry->exec();
+        for(j=TIME1;j<=TIME6;j++){
+            qry->prepare("UPDATE DonationTime SET scheduledDate = (SELECT scheduledDate FROM BufferTable WHERE id = '"+i+"'), scheduledTime = '"+j+"':00, maxDonors = (SELECT maxDonors'"+j+"' FROM BufferTable WHERE id = '"+i+"') WHERE id = '"+currentDonationTimeID+"'");
+            qry->exec();
+        }
+    }
+
 }
 
 //saves and goes back to mainmenu
