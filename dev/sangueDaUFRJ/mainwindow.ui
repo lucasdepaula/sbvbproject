@@ -32,7 +32,7 @@
    <string>Nova Inscrição - Sangue da UFRJ</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Resource.qrc">
+   <iconset resource="../Resource.qrc">
     <normaloff>:/image/data/icon_sangue.ico</normaloff>:/image/data/icon_sangue.ico</iconset>
   </property>
   <property name="autoFillBackground">
@@ -42,8 +42,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>200</y>
+      <x>390</x>
+      <y>160</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -167,8 +167,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>200</y>
+      <x>320</x>
+      <y>160</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -189,7 +189,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>200</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -205,7 +205,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>240</y>
+      <y>200</y>
       <width>241</width>
       <height>20</height>
      </rect>
@@ -224,7 +224,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>280</y>
+      <y>240</y>
       <width>51</width>
       <height>16</height>
      </rect>
@@ -240,7 +240,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>280</y>
+      <y>240</y>
       <width>241</width>
       <height>20</height>
      </rect>
@@ -259,7 +259,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>320</y>
+      <y>290</y>
       <width>141</width>
       <height>21</height>
      </rect>
@@ -275,7 +275,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>350</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -288,37 +288,12 @@
       <string>Escolha o dia</string>
      </property>
     </item>
-    <item>
-     <property name="text">
-      <string>Dia 1</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dia 2</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dia 3</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dia 4</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dia 5</string>
-     </property>
-    </item>
    </widget>
    <widget class="QComboBox" name="comboBox_5">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>390</y>
+      <y>380</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -331,43 +306,12 @@
       <string>Escolha a hora</string>
      </property>
     </item>
-    <item>
-     <property name="text">
-      <string>8:00</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>10:00</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>12:00</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLabel" name="label_17">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>320</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background:transparent;</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;OBS:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
    </widget>
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>340</y>
+      <y>320</y>
       <width>141</width>
       <height>81</height>
      </rect>
@@ -618,6 +562,40 @@
      <string>Voltar</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>320</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <item>
+     <property name="text">
+      <string>Escollha o mutirão</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>290</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;OBS:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
    <zorder>comboBox</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -630,7 +608,6 @@
    <zorder>label_7</zorder>
    <zorder>comboBox_2</zorder>
    <zorder>comboBox_5</zorder>
-   <zorder>label_17</zorder>
    <zorder>comboBox_8</zorder>
    <zorder>lineEdit_2</zorder>
    <zorder>label_18</zorder>
@@ -639,6 +616,8 @@
    <zorder>pushButton_2</zorder>
    <zorder>label</zorder>
    <zorder>pushButton_3</zorder>
+   <zorder>comboBox_3</zorder>
+   <zorder>label_8</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -653,7 +632,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="../Resource.qrc"/>
  </resources>
  <connections/>
 </ui>
