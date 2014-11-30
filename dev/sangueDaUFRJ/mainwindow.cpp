@@ -176,7 +176,7 @@ void MainWindow::saveDonorInfo()
     major = getMajor();
     semester = ui->comboBox->currentText();
     obs = ui->textEdit->toPlainText();
-    qry1.prepare("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ("+QString::number(major)+",'"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
+    qry1.prepare("INSERT INTO Donor (majorID,name,email,phone,semester,obs) VALUES ("+QString::number(major)+",'"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
     qry1.exec();
     qDebug() << qry1.executedQuery();
     date = ui->comboBox_2->currentText();
@@ -196,12 +196,14 @@ void MainWindow::saveDonorInfo()
         while (qry3.next())
         {
             donorID = qry3.value(0).toInt();
+            qDebug() << qry3.value(0).toString();
         }
     }
     qry4.prepare("INSERT INTO DonorSchedule (donationTimeID, donorID) VALUES (:donationTimeID,:donorID)");
     qry4.bindValue(":donationTimeID",donationTimeID);
     qry4.bindValue(":donorID", donorID);
     qry4.exec();
+    qDebug() <<qry4.executedQuery();
 }
 
 //criados:
