@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    //you may close the db here if you want
 
     QSqlQuery* qry = new QSqlQuery(mydb);
-    qry->prepare("SELECT name FROM BloodDrive");
+    qry->prepare("SELECT name FROM BloodDrive ORDER BY id");
     if (qry->exec())
     {
         while (qry->next())
@@ -138,8 +138,13 @@ int MainWindow::getMajor()  //returns the ID, but QString or int?
         qry2.prepare("SELECT id FROM Major WHERE listedName = '"+ui->comboBox_8->currentText()+"'");
         if (qry2.exec())
         {
-            ret = qry.value(0).toInt();
-            return ret;
+            while (qry2.next())
+            {
+//                qDebug() << qry2.executedQuery();
+//                qDebug() << qry2.value(0).toString();
+                ret = qry2.value(0).toInt();
+                return ret;
+            }
         }
     return -1;   //error case
 }
@@ -159,7 +164,8 @@ void MainWindow::on_comboBox_8_currentTextChanged(const QString &arg1)
 //saves donor information to database
 void MainWindow::saveDonorInfo()
 {
-    QString major, name, email, phone, semester, obs, date, time, donationTimeID, donorID;
+    QString name, email, phone, semester, obs, date, time;
+    int major,donationTimeID, donorID;
     QSqlQuery qry1;
     QSqlQuery qry2;
     QSqlQuery qry3;
@@ -170,8 +176,9 @@ void MainWindow::saveDonorInfo()
     major = getMajor();
     semester = ui->comboBox->currentText();
     obs = ui->textEdit->toPlainText();
-    qry1.prepare("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ('"+major+"','"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
+    qry1.prepare("INSERT INTO Donor (major,name,email,phone,semester,obs) VALUES ("+QString::number(major)+",'"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
     qry1.exec();
+    qDebug() << qry1.executedQuery();
     date = ui->comboBox_2->currentText();
     time = ui->comboBox_5->currentText();
     qry2.prepare("SELECT id FROM DonationTime WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
@@ -179,15 +186,16 @@ void MainWindow::saveDonorInfo()
     {
         while (qry2.next())
         {
-            donationTimeID = qry2.value(0).toString();  //ou = <<(msm duvida sempre =/)
+            donationTimeID = qry2.value(0).toInt();  //ou = <<(msm duvida sempre =/)
         }
     }
+    donorID=0;
     qry3.prepare("SELECT MAX (id) FROM Donor");
     if (qry3.exec()) //last Donor
     {
         while (qry3.next())
         {
-            donorID = qry3.value(0).toString();
+            donorID = qry3.value(0).toInt();
         }
     }
     qry4.prepare("INSERT INTO DonorSchedule (donationTimeID, donorID) VALUES (:donationTimeID,:donorID)");
@@ -205,9 +213,11 @@ bool MainWindow::checkDate(QString date)
     {
         strTime = QString::number(time) + ":00";
         if (maxPeople(date,strTime)>countPeople(date,strTime))
+//            qDebug() <<"Didn't remove";
             return true;
     }
     ui->comboBox_2->removeItem(find(date,ui->comboBox_2));
+//    qDebug() << "Removed";
     return false;
 }
 
@@ -260,11 +270,11 @@ void MainWindow::fillDays()
     QString scheduledDate;
     qryaux1.prepare("CREATE TABLE allDates (scheduledDate TEXT);");
     qryaux1.exec();
-    qryaux2.prepare("INSERT INTO allDates SELECT DISTINCT scheduledDate FROM DonationTime WHERE bloodDriveID = "+QString::number(ui->comboBox_3->currentIndex())+" GROUP BY scheduledDate");   //:bloodDriveID)");
+    qryaux2.prepare("INSERT INTO allDates (scheduledDate) SELECT DISTINCT scheduledDate FROM DonationTime WHERE bloodDriveID = "+QString::number(ui->comboBox_3->currentIndex())+" GROUP BY scheduledDate");   //:bloodDriveID)");
 //    qryaux2.bindValue(":bloodDriveID",ui->comboBox_3->currentIndex());
 //   qDebug()<<"bloodDriveID"<<ui->comboBox_3->currentIndex();
     qryaux2.exec();
-    qDebug()<<qryaux2.executedQuery();
+//    qDebug()<<qryaux2.executedQuery();
     //agora vem a parte duvidosa. Farei do jeito que eu acho que é
     int count=0;
     qryaux3.prepare("SELECT COUNT (*) FROM allDates;");
@@ -284,16 +294,16 @@ void MainWindow::fillDays()
         {
             while (qry1.next())
             {
-//                qDebug()<<"Should work";
                 scheduledDate = qry1.value(0).toString(); //ou <<
+                qDebug()<<"scheduledDate: "<<scheduledDate;
             }
         }
 //        qDebug()<<"Testing?";
         if (checkDate(scheduledDate))
         {
 //            ui->comboBox_2->addItem(scheduledDate);
-            ui->comboBox_2->insertItem(ui->comboBox_2->count(),scheduledDate);
-//            qDebug() << "deveria ter adicionado";
+            ui->comboBox_2->addItem(scheduledDate);
+            qDebug() << "deveria ter adicionado";
 //            qDebug() << scheduledDate;
 //            qDebug() << ui->comboBox_2->itemText(0);
         }
@@ -326,6 +336,7 @@ int MainWindow::find(QString& date, QComboBox *&combo)
 
 void MainWindow::on_comboBox_3_currentIndexChanged(int index)
 {
+//    ui->comboBox_2->clear();
     fillDays();
     prepareCombos(ui->comboBox_2->currentText());
 }
