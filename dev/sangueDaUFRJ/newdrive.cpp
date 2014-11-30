@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlQuery>
 #include <QList>
+#include <QDebug>
 #define TEMP "Creating"
 #define TIME1 "8"
 #define TIME2 "9"
@@ -23,7 +24,11 @@ NewDrive::NewDrive(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-    QSqlQuery qry("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, scheduledDate TEXT NOT NULL, maxDonors'"TIME1"' INTEGER DEFAULT(0),maxDonors'"TIME2"' INTEGER DEFAULT(0),maxDonors'"TIME3"' INTEGER DEFAULT(0),maxDonors'"TIME4"' INTEGER DEFAULT(0),maxDonors'"TIME5"' INTEGER DEFAULT(0),maxDonors'"TIME6"' INTEGER DEFAULT(0));",mydb);
+    qDebug() << "Opened DB in NewDrive.cpp";
+    qry = new QSqlQuery(mydb);
+    qry->prepare("CREATE TABLE BufferTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, scheduledDate TEXT NOT NULL, maxDonors'"TIME1"' INTEGER DEFAULT(0),maxDonors'"TIME2"' INTEGER DEFAULT(0),maxDonors'"TIME3"' INTEGER DEFAULT(0),maxDonors'"TIME4"' INTEGER DEFAULT(0),maxDonors'"TIME5"' INTEGER DEFAULT(0),maxDonors'"TIME6"' INTEGER DEFAULT(0));");
+    qry->exec();
+    qDebug() << "Created BufferTable";
 }
 
 NewDrive::~NewDrive()

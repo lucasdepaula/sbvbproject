@@ -44,6 +44,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
 MainMenu::~MainMenu()
 {
+    mydb.close();
     delete ui;
 }
 
