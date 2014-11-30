@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QList>
 #include <QDebug>
+
 #define TEMP "Creating"
 #define TIME1 "8"
 #define TIME2 "9"
@@ -64,18 +65,22 @@ void NewDrive::on_pushButton_4_clicked()
     ui->listWidget->addItem(date);
     ui->listWidget->sortItems();
     qry = new QSqlQuery(mydb);
-    char buffer1[100];
-    char buffer2[100];
-    char buffer3[100];
-    char buffer4[100];
-    char buffer5[100];
-    char buffer6[100];
-    itoa(ui->spinBox->value(),buffer1,10);
-    itoa(ui->spinBox_2->value(),buffer2,10);
-    itoa(ui->spinBox_3->value(),buffer3,10);
-    itoa(ui->spinBox_4->value(),buffer4,10);
-    itoa(ui->spinBox_5->value(),buffer5,10);
-    itoa(ui->spinBox_6->value(),buffer6,10);
+
+    QString buffer1;
+    QString buffer2;
+    QString buffer3;
+    QString buffer4;
+    QString buffer5;
+    QString buffer6;
+
+    buffer1 = QString::number(ui->spinBox->value());
+    //qDebug() << "O valor de buffer1 eh: " << buffer1;
+    buffer2 = QString::number(ui->spinBox_2->value());
+    buffer3 = QString::number(ui->spinBox_3->value());
+    buffer4 = QString::number(ui->spinBox_4->value());
+    buffer5 = QString::number(ui->spinBox_5->value());
+    buffer6 = QString::number(ui->spinBox_6->value());
+
     qry->prepare("INSERT INTO BufferTable (name,scheduledDate,maxDonors"TIME1",maxDonors"TIME2",maxDonors"TIME3",maxDonors"TIME4",maxDonors"TIME5",maxDonors"TIME6") VALUES ('"TEMP"','"+date+"','"+buffer1+"','"+buffer2+"','"+buffer3+"','"+buffer4+"','"+buffer5+"','"+buffer6+"');");
     qry->exec();
     qDebug() << qry->executedQuery();
