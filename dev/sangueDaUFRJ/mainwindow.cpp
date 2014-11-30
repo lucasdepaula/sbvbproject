@@ -226,10 +226,16 @@ int MainWindow::countPeople(QString date, QString time)
 {
     QSqlQuery qry;
     qry.prepare("SELECT COUNT (*) FROM Donor WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
-    qry.exec();
+//    qDebug() << qry.executedQuery();
     int count = 0;
-    if (qry.next())
-        count = qry.value(0).toInt(); //pode não funcionar (será que é = mesmo ou seria += ou <<)?
+    if (qry.exec())
+    {
+        while (qry.next())
+        {
+            count = qry.value(0).toInt(); //pode não funcionar (será que é = mesmo ou seria += ou <<)?
+//            qDebug() << qry.value(0).toString();
+        }
+    }
     return count;
 }
 
@@ -254,8 +260,11 @@ void MainWindow::prepareCombos(QString date)
     for (int time=8; time<14; time++)
     {
         strTime = QString::number(time)+":00";
+//        qDebug() << strTime;
+//        qDebug() <<QString::number(countPeople(date,strTime));
+//        qDebug() <<QString::number(maxPeople(date,strTime));
         if (countPeople(date,strTime)<maxPeople(date,strTime))
-            qDebug() <<"Hey, I'm in prepareCombos";
+//            qDebug() <<"Hey, I'm in prepareCombos";
             ui->comboBox_5->addItem(strTime);
     }
     checkDate(date);
@@ -287,7 +296,7 @@ void MainWindow::fillDays()
         while (qryaux3.next())
         {
             count = qryaux3.value(0).toInt();  //talvez << ou += etc (depende do real funcionamento desses métodos)
-            qDebug()<<QString::number(count);
+//            qDebug()<<QString::number(count);
         }
     }
     qDebug() << "Fill days";
@@ -305,10 +314,10 @@ void MainWindow::fillDays()
         if (checkDate(scheduledDate))
         {
 //            ui->comboBox_2->addItem(scheduledDate);
-            qDebug()<<"scheduledDate: "<<scheduledDate;
+//            qDebug()<<"scheduledDate: "<<scheduledDate;
 //            ui->comboBox_2->addItem("Hello");
             ui->comboBox_2->addItem(scheduledDate);
-            qDebug() << "deveria ter adicionado";
+//            qDebug() << "deveria ter adicionado";
 //            qDebug() << scheduledDate;
 //            qDebug() << ui->comboBox_2->itemText(0);
         }
@@ -348,5 +357,6 @@ void MainWindow::on_comboBox_3_currentIndexChanged(int index)
 
 void MainWindow::on_comboBox_2_currentIndexChanged(int index)
 {
-    prepareCombos(ui->comboBox_2->itemData(index).toString());  //considerando que é possivel acessar o elemento da comboBox assim. Pode ser [] etc();
+    qDebug() << ui->comboBox_2->itemText(index);
+    prepareCombos(ui->comboBox_2->itemText(index));  //considerando que é possivel acessar o elemento da comboBox assim. Pode ser [] etc();
 }
