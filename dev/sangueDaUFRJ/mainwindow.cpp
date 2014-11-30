@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QtSql>
 #include <QSqlQuery>
+#include <QSqlQueryModel>
 #include <QDebug>
 #include <QStringList>
 
@@ -20,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-
+    if (mydb.open())
+        qDebug() << "Opened mydb in mainwindow.cpp";
 /********** magic **********/
 
 //    QSqlQueryModel * modal = new QSqlQueryModel();
@@ -36,6 +38,16 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->comboBox_5->setModel(modal);
 
 //    //you may close the db here if you want
+
+    QSqlQuery* qry = new QSqlQuery(mydb);
+    qry->prepare("SELECT name FROM BloodDrive");
+    if (qry->exec())
+    {
+        while (qry->next())
+        {
+            ui->comboBox_3->addItem(qry->value(0).toString());
+        }
+    }
 
 
     fillDays();
@@ -248,9 +260,11 @@ void MainWindow::fillDays()
     QString scheduledDate;
     qryaux1.prepare("CREATE TABLE allDates (scheduledDate TEXT);");
     qryaux1.exec();
-    qryaux2.prepare("INSERT INTO allDates SELECT scheduledDate FROM DonationTime WHERE bloodDriveID =:bloodDriveID ;");
-    qryaux2.bindValue(":bloodDriveID",ui->comboBox_3->currentIndex());
+    qryaux2.prepare("INSERT INTO allDates SELECT DISTINCT scheduledDate FROM DonationTime WHERE bloodDriveID = "+QString::number(ui->comboBox_3->currentIndex())+" GROUP BY scheduledDate");   //:bloodDriveID)");
+//    qryaux2.bindValue(":bloodDriveID",ui->comboBox_3->currentIndex());
+//   qDebug()<<"bloodDriveID"<<ui->comboBox_3->currentIndex();
     qryaux2.exec();
+    qDebug()<<qryaux2.executedQuery();
     //agora vem a parte duvidosa. Farei do jeito que eu acho que é
     int count=0;
     qryaux3.prepare("SELECT COUNT (*) FROM allDates;");
@@ -259,18 +273,41 @@ void MainWindow::fillDays()
         while (qryaux3.next())
         {
             count = qryaux3.value(0).toInt();  //talvez << ou += etc (depende do real funcionamento desses métodos)
+            qDebug()<<QString::number(count);
         }
     }
+    qDebug() << "Fill days";
     while (count)
     {
         qry1.prepare("SELECT scheduledDate FROM allDates LIMIT 1;");
-        qry1.exec();
         if (qry1.exec())
-            scheduledDate = qry1.value(0).toInt(); //ou <<
+        {
+            while (qry1.next())
+            {
+//                qDebug()<<"Should work";
+                scheduledDate = qry1.value(0).toString(); //ou <<
+            }
+        }
+//        qDebug()<<"Testing?";
         if (checkDate(scheduledDate))
-            ui->comboBox_2->addItem(scheduledDate);
-        qry2.prepare("DELETE scheduledDate FROM allDates WHERE scheduledDate = '"+scheduledDate+"'");
+        {
+//            ui->comboBox_2->addItem(scheduledDate);
+            ui->comboBox_2->insertItem(ui->comboBox_2->count(),scheduledDate);
+//            qDebug() << "deveria ter adicionado";
+//            qDebug() << scheduledDate;
+//            qDebug() << ui->comboBox_2->itemText(0);
+        }
+        qry2.prepare("DELETE FROM allDates WHERE scheduledDate = '"+scheduledDate+"'");
         qry2.exec();
+//        qDebug() << qry2.lastQuery();
+//        QSqlQuery query;
+//        if (query.exec("SELECT scheduledDate FROM allDates"))
+//        {
+//            while (query.next())
+//            {
+//                qDebug() << query.value(0).toString();
+//            }
+//        }
         count--;
     }
     qryaux4.exec("DROP TABLE allDates;");
