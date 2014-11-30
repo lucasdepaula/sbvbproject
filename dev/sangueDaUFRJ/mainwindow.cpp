@@ -213,10 +213,11 @@ bool MainWindow::checkDate(QString date)
     {
         strTime = QString::number(time) + ":00";
         if (maxPeople(date,strTime)>countPeople(date,strTime))
-//            qDebug() <<"Didn't remove";
+        {
             return true;
+        }
     }
-    ui->comboBox_2->removeItem(find(date,ui->comboBox_2));
+//    ui->comboBox_2->removeItem(find(date,ui->comboBox_2));
 //    qDebug() << "Removed";
     return false;
 }
@@ -248,11 +249,13 @@ int MainWindow::maxPeople(QString date, QString time)
 
 void MainWindow::prepareCombos(QString date)
 {
+    ui->comboBox_5->clear();
     QString strTime;
     for (int time=8; time<14; time++)
     {
         strTime = QString::number(time)+":00";
         if (countPeople(date,strTime)<maxPeople(date,strTime))
+            qDebug() <<"Hey, I'm in prepareCombos";
             ui->comboBox_5->addItem(strTime);
     }
     checkDate(date);
@@ -261,6 +264,7 @@ void MainWindow::prepareCombos(QString date)
 
 void MainWindow::fillDays()
 {
+    ui->comboBox_2->clear();
     QSqlQuery qryaux1;
     QSqlQuery qryaux2;
     QSqlQuery qryaux3;
@@ -295,13 +299,14 @@ void MainWindow::fillDays()
             while (qry1.next())
             {
                 scheduledDate = qry1.value(0).toString(); //ou <<
-                qDebug()<<"scheduledDate: "<<scheduledDate;
             }
         }
 //        qDebug()<<"Testing?";
         if (checkDate(scheduledDate))
         {
 //            ui->comboBox_2->addItem(scheduledDate);
+            qDebug()<<"scheduledDate: "<<scheduledDate;
+//            ui->comboBox_2->addItem("Hello");
             ui->comboBox_2->addItem(scheduledDate);
             qDebug() << "deveria ter adicionado";
 //            qDebug() << scheduledDate;
@@ -338,7 +343,7 @@ void MainWindow::on_comboBox_3_currentIndexChanged(int index)
 {
 //    ui->comboBox_2->clear();
     fillDays();
-    prepareCombos(ui->comboBox_2->currentText());
+//    prepareCombos(ui->comboBox_2->currentText());
 }
 
 void MainWindow::on_comboBox_2_currentIndexChanged(int index)
