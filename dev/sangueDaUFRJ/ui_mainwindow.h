@@ -41,7 +41,6 @@ public:
     QLabel *label_7;
     QComboBox *comboBox_2;
     QComboBox *comboBox_5;
-    QLabel *label_17;
     QTextEdit *textEdit;
     QComboBox *comboBox_8;
     QLineEdit *lineEdit_2;
@@ -50,6 +49,8 @@ public:
     QPushButton *pushButton_2;
     QLabel *label;
     QPushButton *pushButton_3;
+    QComboBox *comboBox_3;
+    QLabel *label_8;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -72,7 +73,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(90, 200, 71, 20));
+        comboBox->setGeometry(QRect(390, 160, 71, 20));
         comboBox->setStyleSheet(QStringLiteral(""));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -89,46 +90,42 @@ public:
         lineEdit->setEchoMode(QLineEdit::Normal);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(20, 200, 61, 16));
+        label_4->setGeometry(QRect(320, 160, 61, 16));
         QFont font;
         font.setFamily(QStringLiteral("Ubuntu"));
         label_4->setFont(font);
         label_4->setStyleSheet(QStringLiteral("background:transparent;"));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(20, 240, 71, 16));
+        label_5->setGeometry(QRect(20, 200, 71, 16));
         label_5->setStyleSheet(QStringLiteral("background:transparent;"));
         lineEdit_3 = new QLineEdit(centralWidget);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(90, 240, 241, 20));
+        lineEdit_3->setGeometry(QRect(90, 200, 241, 20));
         lineEdit_3->setStyleSheet(QStringLiteral(""));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(20, 280, 51, 16));
+        label_6->setGeometry(QRect(20, 240, 51, 16));
         label_6->setStyleSheet(QStringLiteral("background:transparent;"));
         lineEdit_4 = new QLineEdit(centralWidget);
         lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(90, 280, 241, 20));
+        lineEdit_4->setGeometry(QRect(90, 240, 241, 20));
         lineEdit_4->setStyleSheet(QStringLiteral(""));
         label_7 = new QLabel(centralWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(20, 320, 141, 21));
+        label_7->setGeometry(QRect(20, 290, 141, 21));
         label_7->setStyleSheet(QStringLiteral("background:transparent;"));
         comboBox_2 = new QComboBox(centralWidget);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setGeometry(QRect(20, 360, 131, 20));
+        comboBox_2->setGeometry(QRect(20, 350, 131, 20));
         comboBox_2->setStyleSheet(QStringLiteral(""));
         comboBox_5 = new QComboBox(centralWidget);
         comboBox_5->setObjectName(QStringLiteral("comboBox_5"));
-        comboBox_5->setGeometry(QRect(20, 390, 131, 20));
+        comboBox_5->setGeometry(QRect(20, 380, 131, 20));
         comboBox_5->setStyleSheet(QStringLiteral(""));
-        label_17 = new QLabel(centralWidget);
-        label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setGeometry(QRect(320, 320, 46, 13));
-        label_17->setStyleSheet(QStringLiteral("background:transparent;"));
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(320, 340, 141, 81));
+        textEdit->setGeometry(QRect(320, 320, 141, 81));
         textEdit->setStyleSheet(QStringLiteral(""));
         comboBox_8 = new QComboBox(centralWidget);
         comboBox_8->setObjectName(QStringLiteral("comboBox_8"));
@@ -168,6 +165,14 @@ public:
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(205, 430, 70, 23));
         pushButton_3->setStyleSheet(QStringLiteral(""));
+        comboBox_3 = new QComboBox(centralWidget);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(20, 320, 281, 20));
+        comboBox_3->setStyleSheet(QStringLiteral(""));
+        label_8 = new QLabel(centralWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(320, 290, 41, 21));
+        label_8->setStyleSheet(QStringLiteral("background:transparent;"));
         MainWindow->setCentralWidget(centralWidget);
         comboBox->raise();
         label_2->raise();
@@ -181,7 +186,6 @@ public:
         label_7->raise();
         comboBox_2->raise();
         comboBox_5->raise();
-        label_17->raise();
         comboBox_8->raise();
         lineEdit_2->raise();
         label_18->raise();
@@ -190,6 +194,8 @@ public:
         pushButton_2->raise();
         label->raise();
         pushButton_3->raise();
+        comboBox_3->raise();
+        label_8->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 480, 21));
@@ -233,20 +239,11 @@ public:
         comboBox_2->clear();
         comboBox_2->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Escolha o dia", 0)
-         << QApplication::translate("MainWindow", "Dia 1", 0)
-         << QApplication::translate("MainWindow", "Dia 2", 0)
-         << QApplication::translate("MainWindow", "Dia 3", 0)
-         << QApplication::translate("MainWindow", "Dia 4", 0)
-         << QApplication::translate("MainWindow", "Dia 5", 0)
         );
         comboBox_5->clear();
         comboBox_5->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Escolha a hora", 0)
-         << QApplication::translate("MainWindow", "8:00", 0)
-         << QApplication::translate("MainWindow", "10:00", 0)
-         << QApplication::translate("MainWindow", "12:00", 0)
         );
-        label_17->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt;\">OBS:</span></p></body></html>", 0));
         comboBox_8->clear();
         comboBox_8->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "BCMT", 0)
@@ -279,6 +276,11 @@ public:
         pushButton_2->setText(QApplication::translate("MainWindow", "Salvar e finalizar", 0));
         label->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">INSCRI\303\207\303\203O DE NOVO DOADOR</span></p></body></html>", 0));
         pushButton_3->setText(QApplication::translate("MainWindow", "Voltar", 0));
+        comboBox_3->clear();
+        comboBox_3->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Escollha o mutir\303\243o", 0)
+        );
+        label_8->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">OBS:</span></p></body></html>", 0));
     } // retranslateUi
 
 };
