@@ -60,7 +60,7 @@ void NewDrive::closeEvent(QCloseEvent *)
 //adds new day in the list
 void NewDrive::on_pushButton_4_clicked()
 {
-    QString date = ui->dateEdit->text();
+    QString date = ui->dateEdit->date().toString("yyyy/MM/dd");
     ui->listWidget->addItem(date);
     ui->listWidget->sortItems();
     qry = new QSqlQuery(mydb);
