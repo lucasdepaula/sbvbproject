@@ -28,7 +28,7 @@ Report::Report(QWidget *parent) :
 
     //qry->prepare("SELECT * FROM Donor, 'Blood Drive' GROUP BY Donor.name ORDER BY Donor.name;");
 
-    qry->prepare("SELECT name FROM BloodDrive ORDER BY startdate DESC;");
+    qry->prepare("SELECT name FROM BloodDrive ORDER BY name DESC;");
     qry->exec();
 
     // the code below fills the "mutirao" combobox
