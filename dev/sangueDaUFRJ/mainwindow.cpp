@@ -205,7 +205,7 @@ void MainWindow::saveDonorInfo()
     {
         while (query.next())
         {
-            DonorScheduleID = query.value(0).toInt();
+            DonorScheduleID = query.value(0).toInt()+1;
         }
     }
     qry4.prepare("INSERT INTO DonorSchedule (id, donationTimeID, donorID) VALUES ("+QString::number(DonorScheduleID)+","+QString::number(donationTimeID)+","+QString::number(donorID)+")");//:donationTimeID,:donorID)");
@@ -236,15 +236,23 @@ bool MainWindow::checkDate(QString date)
 int MainWindow::countPeople(QString date, QString time)
 {
     QSqlQuery qry;
-    qry.prepare("SELECT COUNT (*) FROM Donor WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
+    int DonationTimeID;
+    qry.prepare("SELECT id FROM DonationTime WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
 //    qDebug() << qry.executedQuery();
     int count = 0;
+//    qDebug()<<"What?";
     if (qry.exec())
     {
         while (qry.next())
         {
-            count = qry.value(0).toInt(); //pode não funcionar (será que é = mesmo ou seria += ou <<)?
-//            qDebug() << qry.value(0).toString();
+            DonationTimeID = qry.value(0).toInt();
+        }
+    }
+    if (qry.exec("SELECT COUNT (*) FROM DonorSchedule WHERE donationTimeID = "+QString::number(DonationTimeID)))
+    {
+        while (qry.next())
+        {
+            count = qry.value(0).toInt();
         }
     }
     return count;
@@ -275,8 +283,12 @@ void MainWindow::prepareCombos(QString date)
 //        qDebug() <<QString::number(countPeople(date,strTime));
 //        qDebug() <<QString::number(maxPeople(date,strTime));
         if (countPeople(date,strTime)<maxPeople(date,strTime))
+        {
 //            qDebug() <<"Hey, I'm in prepareCombos";
+            qDebug() << "maxPeople: " << maxPeople(date, strTime);
+            qDebug() << "countPeople: " << countPeople(date,strTime);
             ui->comboBox_5->addItem(strTime);
+        }
     }
     checkDate(date);
     return;
