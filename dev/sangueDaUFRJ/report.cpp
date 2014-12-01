@@ -59,6 +59,7 @@ void Report::closeEvent(QCloseEvent *)
     int y = (screenGeometry.height()-appmenu->height()) / 2;
     appmenu->move(x, y);
     appmenu->show();
+    mydb.close();
     this->close();
 }
 
