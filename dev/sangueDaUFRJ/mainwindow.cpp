@@ -178,7 +178,7 @@ void MainWindow::saveDonorInfo()
     obs = ui->textEdit->toPlainText();
     qry1.prepare("INSERT INTO Donor (majorID,name,email,phone,semester,obs) VALUES ("+QString::number(major)+",'"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
     qry1.exec();
-    qDebug() << qry1.executedQuery();
+    //qDebug() << qry1.executedQuery();
     date = ui->comboBox_2->currentText();
     time = ui->comboBox_5->currentText();
     qry2.prepare("SELECT id FROM DonationTime WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
@@ -196,12 +196,21 @@ void MainWindow::saveDonorInfo()
         while (qry3.next())
         {
             donorID = qry3.value(0).toInt();
-            qDebug() << qry3.value(0).toString();
+   //         qDebug() << qry3.value(0).toString();
         }
     }
-    qry4.prepare("INSERT INTO DonorSchedule (donationTimeID, donorID) VALUES (:donationTimeID,:donorID)");
-    qry4.bindValue(":donationTimeID",donationTimeID);
-    qry4.bindValue(":donorID", donorID);
+    int DonorScheduleID=0;
+    QSqlQuery query;
+    if(query.exec("SELECT MAX (id) FROM DonorSchedule"))
+    {
+        while (query.next())
+        {
+            DonorScheduleID = query.value(0).toInt();
+        }
+    }
+    qry4.prepare("INSERT INTO DonorSchedule (id, donationTimeID, donorID) VALUES ("+QString::number(DonorScheduleID)+","+QString::number(donationTimeID)+","+QString::number(donorID)+")");//:donationTimeID,:donorID)");
+//    qry4.bindValue(":donationTimeID",QString::number(donationTimeID));
+//    qry4.bindValue(":donorID", QString::number(donorID));
     qry4.exec();
     qDebug() <<qry4.executedQuery();
 }
