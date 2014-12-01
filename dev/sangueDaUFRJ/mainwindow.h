@@ -35,6 +35,8 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(int index);
 
+    void on_comboBox_5_currentTextChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     QMainWindow *appmenu;

@@ -21,23 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName("sangueDB.db");
     mydb.open();
-    if (mydb.open())
-        qDebug() << "Opened mydb in mainwindow.cpp";
+
 /********** magic **********/
-
-//    QSqlQueryModel * modal = new QSqlQueryModel();
-//    //db must be opened -> I considered it will be opened by MainMenu. Otherwise, here is the place for "open()" method
-//    QSqlQuery* qry = new QSqlQuery(mydb);  //mydb is the database
-//    qry->prepare("select date from DonationTime");
-//    qry->exec();
-//    modal->setQuery(*qry);
-//    ui->comboBox_2->setModel(modal);
-//    qry->prepare("select time from DonationTime");    //I wonder if this repetition of the code works, I guess so
-//    qry->exec();
-//    modal->setQuery(*qry);
-//    ui->comboBox_5->setModel(modal);
-
-//    //you may close the db here if you want
 
     QSqlQuery* qry = new QSqlQuery(mydb);
     qry->prepare("SELECT name FROM BloodDrive ORDER BY id");
@@ -58,10 +43,6 @@ MainWindow::MainWindow(QWidget *parent) :
 /**********\magic **********/
 
 
-
-//    QStringList testList;
-//    testList << "Hello" <<"teste";
-//    ui->comboBox_2->addItems(testList);
     setStyleSheet("background-image: url(:/image/data/sangue.png);font-family : Arial, Helvetica, 'Nimbus Sans L'', 'Liberation Sans'', FreeSans, Sans-serif; font-size:13px");
 
 }
@@ -140,8 +121,6 @@ int MainWindow::getMajor()  //returns the ID, but QString or int?
         {
             while (qry2.next())
             {
-//                qDebug() << qry2.executedQuery();
-//                qDebug() << qry2.value(0).toString();
                 ret = qry2.value(0).toInt();
                 return ret;
             }
@@ -178,7 +157,6 @@ void MainWindow::saveDonorInfo()
     obs = ui->textEdit->toPlainText();
     qry1.prepare("INSERT INTO Donor (majorID,name,email,phone,semester,obs) VALUES ("+QString::number(major)+",'"+name+"','"+email+"','"+phone+"','"+semester+"','"+obs+"');");
     qry1.exec();
-    //qDebug() << qry1.executedQuery();
     date = ui->comboBox_2->currentText();
     time = ui->comboBox_5->currentText();
     qry2.prepare("SELECT id FROM DonationTime WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
@@ -196,7 +174,6 @@ void MainWindow::saveDonorInfo()
         while (qry3.next())
         {
             donorID = qry3.value(0).toInt();
-   //         qDebug() << qry3.value(0).toString();
         }
     }
     int DonorScheduleID=0;
@@ -208,11 +185,8 @@ void MainWindow::saveDonorInfo()
             DonorScheduleID = query.value(0).toInt()+1;
         }
     }
-    qry4.prepare("INSERT INTO DonorSchedule (id, donationTimeID, donorID) VALUES ("+QString::number(DonorScheduleID)+","+QString::number(donationTimeID)+","+QString::number(donorID)+")");//:donationTimeID,:donorID)");
-//    qry4.bindValue(":donationTimeID",QString::number(donationTimeID));
-//    qry4.bindValue(":donorID", QString::number(donorID));
+    qry4.prepare("INSERT INTO DonorSchedule (id, donationTimeID, donorID) VALUES ("+QString::number(DonorScheduleID)+","+QString::number(donationTimeID)+","+QString::number(donorID)+")");
     qry4.exec();
-    qDebug() <<qry4.executedQuery();
 }
 
 //criados:
@@ -228,8 +202,6 @@ bool MainWindow::checkDate(QString date)
             return true;
         }
     }
-//    ui->comboBox_2->removeItem(find(date,ui->comboBox_2));
-//    qDebug() << "Removed";
     return false;
 }
 
@@ -238,9 +210,7 @@ int MainWindow::countPeople(QString date, QString time)
     QSqlQuery qry;
     int DonationTimeID;
     qry.prepare("SELECT id FROM DonationTime WHERE scheduledDate = '"+date+"' AND scheduledTime = '"+time+"'");
-//    qDebug() << qry.executedQuery();
     int count = 0;
-//    qDebug()<<"What?";
     if (qry.exec())
     {
         while (qry.next())
@@ -266,7 +236,7 @@ int MainWindow::maxPeople(QString date, QString time)
     {
         while(qry.next())
         {
-            max = qry.value(0).toInt();  //talves tenha que ser <<
+            max = qry.value(0).toInt();
         }
     }
     return max;
@@ -279,14 +249,8 @@ void MainWindow::prepareCombos(QString date)
     for (int time=8; time<14; time++)
     {
         strTime = QString::number(time)+":00";
-//        qDebug() << strTime;
-//        qDebug() <<QString::number(countPeople(date,strTime));
-//        qDebug() <<QString::number(maxPeople(date,strTime));
         if (countPeople(date,strTime)<maxPeople(date,strTime))
         {
-//            qDebug() <<"Hey, I'm in prepareCombos";
-            qDebug() << "maxPeople: " << maxPeople(date, strTime);
-            qDebug() << "countPeople: " << countPeople(date,strTime);
             ui->comboBox_5->addItem(strTime);
         }
     }
@@ -307,22 +271,16 @@ void MainWindow::fillDays()
     qryaux1.prepare("CREATE TABLE allDates (scheduledDate TEXT);");
     qryaux1.exec();
     qryaux2.prepare("INSERT INTO allDates (scheduledDate) SELECT DISTINCT scheduledDate FROM DonationTime WHERE bloodDriveID = "+QString::number(ui->comboBox_3->currentIndex())+" GROUP BY scheduledDate");   //:bloodDriveID)");
-//    qryaux2.bindValue(":bloodDriveID",ui->comboBox_3->currentIndex());
-//   qDebug()<<"bloodDriveID"<<ui->comboBox_3->currentIndex();
     qryaux2.exec();
-//    qDebug()<<qryaux2.executedQuery();
-    //agora vem a parte duvidosa. Farei do jeito que eu acho que é
     int count=0;
     qryaux3.prepare("SELECT COUNT (*) FROM allDates;");
     if (qryaux3.exec())
     {
         while (qryaux3.next())
         {
-            count = qryaux3.value(0).toInt();  //talvez << ou += etc (depende do real funcionamento desses métodos)
-//            qDebug()<<QString::number(count);
+            count = qryaux3.value(0).toInt();
         }
     }
-    qDebug() << "Fill days";
     while (count)
     {
         qry1.prepare("SELECT scheduledDate FROM allDates LIMIT 1;");
@@ -333,28 +291,12 @@ void MainWindow::fillDays()
                 scheduledDate = qry1.value(0).toString(); //ou <<
             }
         }
-//        qDebug()<<"Testing?";
         if (checkDate(scheduledDate))
         {
-//            ui->comboBox_2->addItem(scheduledDate);
-//            qDebug()<<"scheduledDate: "<<scheduledDate;
-//            ui->comboBox_2->addItem("Hello");
             ui->comboBox_2->addItem(scheduledDate);
-//            qDebug() << "deveria ter adicionado";
-//            qDebug() << scheduledDate;
-//            qDebug() << ui->comboBox_2->itemText(0);
         }
         qry2.prepare("DELETE FROM allDates WHERE scheduledDate = '"+scheduledDate+"'");
         qry2.exec();
-//        qDebug() << qry2.lastQuery();
-//        QSqlQuery query;
-//        if (query.exec("SELECT scheduledDate FROM allDates"))
-//        {
-//            while (query.next())
-//            {
-//                qDebug() << query.value(0).toString();
-//            }
-//        }
         count--;
     }
     qryaux4.exec("DROP TABLE allDates;");
@@ -373,13 +315,18 @@ int MainWindow::find(QString& date, QComboBox *&combo)
 
 void MainWindow::on_comboBox_3_currentIndexChanged(int index)
 {
-//    ui->comboBox_2->clear();
     fillDays();
-//    prepareCombos(ui->comboBox_2->currentText());
 }
 
 void MainWindow::on_comboBox_2_currentIndexChanged(int index)
 {
-    qDebug() << ui->comboBox_2->itemText(index);
     prepareCombos(ui->comboBox_2->itemText(index));  //considerando que é possivel acessar o elemento da comboBox assim. Pode ser [] etc();
+}
+
+void MainWindow::on_comboBox_5_currentTextChanged(const QString &arg1)
+{
+    if (!checkDate(ui->comboBox_2->currentText()))
+    {
+        ui->comboBox_2->removeItem(ui->comboBox_2->currentIndex());
+    }
 }
