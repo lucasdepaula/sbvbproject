@@ -6,4 +6,4 @@ Professor: Sergio Barbosa Villas-Boas (sbVB) www.sbvb.com.br
 Sangue da UFRJ
 ===========
 
-Trabalho final para a disciplina de Linguagens de Programação
+Trabalho final para a disciplina de Linguagens de Programação.
